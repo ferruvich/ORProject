@@ -9,15 +9,14 @@ import java.util.ArrayList;
  * Created by Danieru on 06/06/2017.
  */
 public class Route extends ArrayList<Node> {
-    private Double cost;
+    private Double cost = 0.0;
     private int totLinehaul = 0;
     private int totBackhaul = 0;
     private int totCustomers = 0;
 
     private boolean closed = false;
 
-    @Override
-    public boolean add(Node n) throws NodeNotSupportedException {
+    public boolean addToRoute(Node n) throws NodeNotSupportedException {
         boolean added = false;
         switch(n.getType()){
             case "Warehouse":{

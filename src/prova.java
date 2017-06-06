@@ -1,4 +1,6 @@
 import core.Node;
+import core.Route;
+import core.RouteList;
 import core.TSPInstance;
 import utils.*;
 
@@ -11,12 +13,16 @@ public class prova{
     public static void main(String[] args){
         TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/A1.json");
         DistanceMap.getInstance().initialize(in);
-        List<Node> nodes = in.getNodes();
-        for(Node n: nodes){
-            for(Node no: nodes){
-                System.out.print("Distance between node " + n.getIndex() + " and node " + no.getIndex() + ": ");
-                System.out.println(DistanceMap.getInstance().getDistance(n, no));
+        RouteList rl = new RouteList();
+        rl.initialize(in);
+        int i = 0;
+        for(Route r : rl){
+            System.out.print("La route " + i + " contiene i nodi ");
+            for(Node n: r){
+                System.out.print(n.getIndex() + ";");
             }
+            System.out.println(" Con costi Linehaul: " + r.getTotLinehaul() + " e Backhaul: " + r.getTotBackhaul());
+            i++;
         }
     }
 }
