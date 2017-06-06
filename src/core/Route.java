@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 public class Route extends ArrayList<Node> {
     private Double cost;
-    private int totLinehaul;
-    private int totBackhaul;
-    private int totCustomers;
+    private int totLinehaul = 0;
+    private int totBackhaul = 0;
+    private int totCustomers = 0;
 
     private boolean closed = false;
 
@@ -43,7 +43,7 @@ public class Route extends ArrayList<Node> {
                     throw new NodeNotSupportedException("Route already closed");
                 }else{
                     this.add(n);
-                    this.totLinehaul += n.getCapacity();
+                    this.totLinehaul = this.getTotLinehaul() + n.getCapacity();
                     this.totCustomers++;
                     added = true;
                     break;
@@ -56,7 +56,7 @@ public class Route extends ArrayList<Node> {
                     throw new NodeNotSupportedException("Route already closed");
                 }else{
                     this.add(n);
-                    this.totBackhaul += n.getCapacity();
+                    this.totBackhaul = this.getTotBackhaul() + n.getCapacity();
                     this.totCustomers++;
                     added = true;
                     break;
@@ -85,5 +85,17 @@ public class Route extends ArrayList<Node> {
 
     public Double getCost(){
         return this.cost;
+    }
+
+    public int getTotLinehaul() {
+        return this.totLinehaul;
+    }
+
+    public int getTotBackhaul() {
+        return this.totBackhaul;
+    }
+
+    public int getTotCustomers(){
+        return this.totCustomers;
     }
 }

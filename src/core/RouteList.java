@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public class RouteList extends ArrayList<Route>{
 
     public void initialize(TSPInstance tspInstance){
-
+        
     }
 }
