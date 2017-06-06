@@ -1,0 +1,644 @@
+{ 
+	"totNodes": 90,
+	"totRoutes": 7,
+	"maxCapacity": 4000,
+	"nodes": [
+	{
+		"index": 0,
+		"xcoord": 12000,
+		"ycoord": 16000,
+		"type": "Warehouse",
+		"capacity": 0 
+	},
+	{
+		"index": 1,
+		"xcoord": 8892,
+		"ycoord": 6203,
+		"type": "Backhaul",
+		"capacity": 586 
+	},
+	{
+		"index": 2,
+		"xcoord": 13399,
+		"ycoord": 1309,
+		"type": "Backhaul",
+		"capacity": 595 
+	},
+	{
+		"index": 3,
+		"xcoord": 6011,
+		"ycoord": 9879,
+		"type": "Backhaul",
+		"capacity": 798 
+	},
+	{
+		"index": 4,
+		"xcoord": 16330,
+		"ycoord": 12313,
+		"type": "Backhaul",
+		"capacity": 725 
+	},
+	{
+		"index": 5,
+		"xcoord": 9012,
+		"ycoord": 21849,
+		"type": "Backhaul",
+		"capacity": 325 
+	},
+	{
+		"index": 6,
+		"xcoord": 15386,
+		"ycoord": 8198,
+		"type": "Backhaul",
+		"capacity": 236 
+	},
+	{
+		"index": 7,
+		"xcoord": 3873,
+		"ycoord": 2940,
+		"type": "Backhaul",
+		"capacity": 919 
+	},
+	{
+		"index": 8,
+		"xcoord": 9073,
+		"ycoord": 24571,
+		"type": "Backhaul",
+		"capacity": 502 
+	},
+	{
+		"index": 9,
+		"xcoord": 1625,
+		"ycoord": 3894,
+		"type": "Backhaul",
+		"capacity": 137 
+	},
+	{
+		"index": 10,
+		"xcoord": 19542,
+		"ycoord": 7658,
+		"type": "Backhaul",
+		"capacity": 250 
+	},
+	{
+		"index": 11,
+		"xcoord": 12666,
+		"ycoord": 15362,
+		"type": "Backhaul",
+		"capacity": 316 
+	},
+	{
+		"index": 12,
+		"xcoord": 21720,
+		"ycoord": 22539,
+		"type": "Backhaul",
+		"capacity": 637 
+	},
+	{
+		"index": 13,
+		"xcoord": 23326,
+		"ycoord": 27558,
+		"type": "Backhaul",
+		"capacity": 406 
+	},
+	{
+		"index": 14,
+		"xcoord": 13620,
+		"ycoord": 15262,
+		"type": "Backhaul",
+		"capacity": 617 
+	},
+	{
+		"index": 15,
+		"xcoord": 20144,
+		"ycoord": 1661,
+		"type": "Backhaul",
+		"capacity": 362 
+	},
+	{
+		"index": 16,
+		"xcoord": 18026,
+		"ycoord": 21083,
+		"type": "Backhaul",
+		"capacity": 342 
+	},
+	{
+		"index": 17,
+		"xcoord": 13871,
+		"ycoord": 18059,
+		"type": "Backhaul",
+		"capacity": 335 
+	},
+	{
+		"index": 18,
+		"xcoord": 9374,
+		"ycoord": 15525,
+		"type": "Backhaul",
+		"capacity": 753 
+	},
+	{
+		"index": 19,
+		"xcoord": 14623,
+		"ycoord": 7407,
+		"type": "Backhaul",
+		"capacity": 475 
+	},
+	{
+		"index": 20,
+		"xcoord": 10307,
+		"ycoord": 4722,
+		"type": "Backhaul",
+		"capacity": 609 
+	},
+	{
+		"index": 21,
+		"xcoord": 9294,
+		"ycoord": 20619,
+		"type": "Backhaul",
+		"capacity": 323 
+	},
+	{
+		"index": 22,
+		"xcoord": 19120,
+		"ycoord": 24019,
+		"type": "Backhaul",
+		"capacity": 851 
+	},
+	{
+		"index": 23,
+		"xcoord": 7858,
+		"ycoord": 17470,
+		"type": "Backhaul",
+		"capacity": 650 
+	},
+	{
+		"index": 24,
+		"xcoord": 10598,
+		"ycoord": 19377,
+		"type": "Backhaul",
+		"capacity": 432 
+	},
+	{
+		"index": 25,
+		"xcoord": 21349,
+		"ycoord": 19402,
+		"type": "Backhaul",
+		"capacity": 785 
+	},
+	{
+		"index": 26,
+		"xcoord": 6894,
+		"ycoord": 25613,
+		"type": "Backhaul",
+		"capacity": 311 
+	},
+	{
+		"index": 27,
+		"xcoord": 12164,
+		"ycoord": 16717,
+		"type": "Backhaul",
+		"capacity": 280 
+	},
+	{
+		"index": 28,
+		"xcoord": 6654,
+		"ycoord": 18862,
+		"type": "Backhaul",
+		"capacity": 824 
+	},
+	{
+		"index": 29,
+		"xcoord": 14633,
+		"ycoord": 331,
+		"type": "Backhaul",
+		"capacity": 1101 
+	},
+	{
+		"index": 30,
+		"xcoord": 8450,
+		"ycoord": 5174,
+		"type": "Backhaul",
+		"capacity": 334 
+	},
+	{
+		"index": 31,
+		"xcoord": 15296,
+		"ycoord": 20368,
+		"type": "Backhaul",
+		"capacity": 577 
+	},
+	{
+		"index": 32,
+		"xcoord": 10508,
+		"ycoord": 19452,
+		"type": "Backhaul",
+		"capacity": 577 
+	},
+	{
+		"index": 33,
+		"xcoord": 621,
+		"ycoord": 7570,
+		"type": "Backhaul",
+		"capacity": 684 
+	},
+	{
+		"index": 34,
+		"xcoord": 11823,
+		"ycoord": 7570,
+		"type": "Backhaul",
+		"capacity": 515 
+	},
+	{
+		"index": 35,
+		"xcoord": 5288,
+		"ycoord": 12940,
+		"type": "Backhaul",
+		"capacity": 346 
+	},
+	{
+		"index": 36,
+		"xcoord": 10197,
+		"ycoord": 4960,
+		"type": "Backhaul",
+		"capacity": 692 
+	},
+	{
+		"index": 37,
+		"xcoord": 15627,
+		"ycoord": 26692,
+		"type": "Backhaul",
+		"capacity": 721 
+	},
+	{
+		"index": 38,
+		"xcoord": 5048,
+		"ycoord": 17671,
+		"type": "Backhaul",
+		"capacity": 864 
+	},
+	{
+		"index": 39,
+		"xcoord": 18177,
+		"ycoord": 9653,
+		"type": "Backhaul",
+		"capacity": 773 
+	},
+	{
+		"index": 40,
+		"xcoord": 18036,
+		"ycoord": 21309,
+		"type": "Backhaul",
+		"capacity": 573 
+	},
+	{
+		"index": 41,
+		"xcoord": 23406,
+		"ycoord": 12564,
+		"type": "Backhaul",
+		"capacity": 435 
+	},
+	{
+		"index": 42,
+		"xcoord": 359,
+		"ycoord": 21046,
+		"type": "Backhaul",
+		"capacity": 968 
+	},
+	{
+		"index": 43,
+		"xcoord": 17715,
+		"ycoord": 25726,
+		"type": "Backhaul",
+		"capacity": 657 
+	},
+	{
+		"index": 44,
+		"xcoord": 21499,
+		"ycoord": 23016,
+		"type": "Backhaul",
+		"capacity": 816 
+	},
+	{
+		"index": 45,
+		"xcoord": 11994,
+		"ycoord": 10054,
+		"type": "Backhaul",
+		"capacity": 602 
+	},
+	{
+		"index": 46,
+		"xcoord": 10272,
+		"ycoord": 7075,
+		"type": "Linehaul",
+		"capacity": 709 
+	},
+	{
+		"index": 47,
+		"xcoord": 5103,
+		"ycoord": 22545,
+		"type": "Linehaul",
+		"capacity": 421 
+	},
+	{
+		"index": 48,
+		"xcoord": 8285,
+		"ycoord": 6962,
+		"type": "Linehaul",
+		"capacity": 665 
+	},
+	{
+		"index": 49,
+		"xcoord": 22649,
+		"ycoord": 9710,
+		"type": "Linehaul",
+		"capacity": 671 
+	},
+	{
+		"index": 50,
+		"xcoord": 4310,
+		"ycoord": 14653,
+		"type": "Linehaul",
+		"capacity": 767 
+	},
+	{
+		"index": 51,
+		"xcoord": 18985,
+		"ycoord": 15356,
+		"type": "Linehaul",
+		"capacity": 666 
+	},
+	{
+		"index": 52,
+		"xcoord": 14588,
+		"ycoord": 28894,
+		"type": "Linehaul",
+		"capacity": 778 
+	},
+	{
+		"index": 53,
+		"xcoord": 23301,
+		"ycoord": 22482,
+		"type": "Linehaul",
+		"capacity": 731 
+	},
+	{
+		"index": 54,
+		"xcoord": 7572,
+		"ycoord": 17288,
+		"type": "Linehaul",
+		"capacity": 435 
+	},
+	{
+		"index": 55,
+		"xcoord": 15311,
+		"ycoord": 14352,
+		"type": "Linehaul",
+		"capacity": 427 
+	},
+	{
+		"index": 56,
+		"xcoord": 23923,
+		"ycoord": 8405,
+		"type": "Linehaul",
+		"capacity": 301 
+	},
+	{
+		"index": 57,
+		"xcoord": 264,
+		"ycoord": 3787,
+		"type": "Linehaul",
+		"capacity": 503 
+	},
+	{
+		"index": 58,
+		"xcoord": 8234,
+		"ycoord": 29672,
+		"type": "Linehaul",
+		"capacity": 318 
+	},
+	{
+		"index": 59,
+		"xcoord": 5976,
+		"ycoord": 4226,
+		"type": "Linehaul",
+		"capacity": 300 
+	},
+	{
+		"index": 60,
+		"xcoord": 746,
+		"ycoord": 19835,
+		"type": "Linehaul",
+		"capacity": 641 
+	},
+	{
+		"index": 61,
+		"xcoord": 13394,
+		"ycoord": 28668,
+		"type": "Linehaul",
+		"capacity": 177 
+	},
+	{
+		"index": 62,
+		"xcoord": 18192,
+		"ycoord": 7200,
+		"type": "Linehaul",
+		"capacity": 817 
+	},
+	{
+		"index": 63,
+		"xcoord": 3156,
+		"ycoord": 374,
+		"type": "Linehaul",
+		"capacity": 489 
+	},
+	{
+		"index": 64,
+		"xcoord": 4952,
+		"ycoord": 18932,
+		"type": "Linehaul",
+		"capacity": 185 
+	},
+	{
+		"index": 65,
+		"xcoord": 3186,
+		"ycoord": 22169,
+		"type": "Linehaul",
+		"capacity": 571 
+	},
+	{
+		"index": 66,
+		"xcoord": 1620,
+		"ycoord": 24214,
+		"type": "Linehaul",
+		"capacity": 318 
+	},
+	{
+		"index": 67,
+		"xcoord": 18463,
+		"ycoord": 17489,
+		"type": "Linehaul",
+		"capacity": 383 
+	},
+	{
+		"index": 68,
+		"xcoord": 716,
+		"ycoord": 20387,
+		"type": "Linehaul",
+		"capacity": 551 
+	},
+	{
+		"index": 69,
+		"xcoord": 5334,
+		"ycoord": 29333,
+		"type": "Linehaul",
+		"capacity": 77 
+	},
+	{
+		"index": 70,
+		"xcoord": 18413,
+		"ycoord": 6109,
+		"type": "Linehaul",
+		"capacity": 840 
+	},
+	{
+		"index": 71,
+		"xcoord": 16355,
+		"ycoord": 10964,
+		"type": "Linehaul",
+		"capacity": 390 
+	},
+	{
+		"index": 72,
+		"xcoord": 23652,
+		"ycoord": 9245,
+		"type": "Linehaul",
+		"capacity": 531 
+	},
+	{
+		"index": 73,
+		"xcoord": 7733,
+		"ycoord": 5205,
+		"type": "Linehaul",
+		"capacity": 93 
+	},
+	{
+		"index": 74,
+		"xcoord": 8746,
+		"ycoord": 27928,
+		"type": "Linehaul",
+		"capacity": 370 
+	},
+	{
+		"index": 75,
+		"xcoord": 8445,
+		"ycoord": 25494,
+		"type": "Linehaul",
+		"capacity": 915 
+	},
+	{
+		"index": 76,
+		"xcoord": 14217,
+		"ycoord": 399,
+		"type": "Linehaul",
+		"capacity": 520 
+	},
+	{
+		"index": 77,
+		"xcoord": 22558,
+		"ycoord": 24477,
+		"type": "Linehaul",
+		"capacity": 619 
+	},
+	{
+		"index": 78,
+		"xcoord": 8234,
+		"ycoord": 14364,
+		"type": "Linehaul",
+		"capacity": 317 
+	},
+	{
+		"index": 79,
+		"xcoord": 6909,
+		"ycoord": 15770,
+		"type": "Linehaul",
+		"capacity": 154 
+	},
+	{
+		"index": 80,
+		"xcoord": 7743,
+		"ycoord": 8643,
+		"type": "Linehaul",
+		"capacity": 517 
+	},
+	{
+		"index": 81,
+		"xcoord": 13986,
+		"ycoord": 12545,
+		"type": "Linehaul",
+		"capacity": 264 
+	},
+	{
+		"index": 82,
+		"xcoord": 5334,
+		"ycoord": 10814,
+		"type": "Linehaul",
+		"capacity": 877 
+	},
+	{
+		"index": 83,
+		"xcoord": 23923,
+		"ycoord": 27539,
+		"type": "Linehaul",
+		"capacity": 299 
+	},
+	{
+		"index": 84,
+		"xcoord": 16967,
+		"ycoord": 19270,
+		"type": "Linehaul",
+		"capacity": 532 
+	},
+	{
+		"index": 85,
+		"xcoord": 17349,
+		"ycoord": 14101,
+		"type": "Linehaul",
+		"capacity": 413 
+	},
+	{
+		"index": 86,
+		"xcoord": 11657,
+		"ycoord": 2319,
+		"type": "Linehaul",
+		"capacity": 445 
+	},
+	{
+		"index": 87,
+		"xcoord": 23100,
+		"ycoord": 15142,
+		"type": "Linehaul",
+		"capacity": 562 
+	},
+	{
+		"index": 88,
+		"xcoord": 5504,
+		"ycoord": 17476,
+		"type": "Linehaul",
+		"capacity": 360 
+	},
+	{
+		"index": 89,
+		"xcoord": 21384,
+		"ycoord": 14189,
+		"type": "Linehaul",
+		"capacity": 83 
+	},
+	{
+		"index": 90,
+		"xcoord": 15381,
+		"ycoord": 3574,
+		"type": "Linehaul",
+		"capacity": 425 
+	}
+	]
+}
