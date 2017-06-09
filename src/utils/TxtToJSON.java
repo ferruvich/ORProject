@@ -33,6 +33,36 @@ public class TxtToJSON{
                     } else if (i == 2) {
                         writer.write("\t\"totRoutes\": " + reader.nextLine() + ",\n");
                         i++;
+                    } else if (i == 3){
+                        String completeTspIndexes = reader.nextLine();
+                        writer.write("\t\"completeTsp\": [");
+                        completeTspIndexes = completeTspIndexes.replace(" ", ",");
+                        if(completeTspIndexes.lastIndexOf(",") == completeTspIndexes.length()-1){
+                            completeTspIndexes = completeTspIndexes.substring(0, completeTspIndexes.length()-1);
+                        }
+                        writer.write(completeTspIndexes);
+                        writer.write("],\n");
+                        i++;
+                    } else if(i == 4){
+                        String lineHaulTspIndexes = reader.nextLine();
+                        writer.write("\t\"lineHaulTsp\": [");
+                        lineHaulTspIndexes = lineHaulTspIndexes.replace(" ", ",");
+                        if(lineHaulTspIndexes.lastIndexOf(",") == lineHaulTspIndexes.length()-1){
+                            lineHaulTspIndexes = lineHaulTspIndexes.substring(0, lineHaulTspIndexes.length()-1);
+                        }
+                        writer.write(lineHaulTspIndexes);
+                        writer.write("],\n");
+                        i++;
+                    } else if (i == 5){
+                        String backHaulTspIndexes = reader.nextLine();
+                        writer.write("\t\"backHaulTsp\": [");
+                        backHaulTspIndexes = backHaulTspIndexes.replace(" ", ",");
+                        if(backHaulTspIndexes.lastIndexOf(",") == backHaulTspIndexes.length()-1){
+                            backHaulTspIndexes = backHaulTspIndexes.substring(0, backHaulTspIndexes.length()-1);
+                        }
+                        writer.write(backHaulTspIndexes);
+                        writer.write("],\n");
+                        i++;
                     } else {
                         String line = reader.nextLine();
                         String[] splitted = line.split("   ");
