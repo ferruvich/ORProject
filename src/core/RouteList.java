@@ -91,7 +91,6 @@ public class RouteList {
             }
         }
 
-        //TODO Inseriamo i nodi backhaul
         for(Node n: backhaulNodes){
             Map<Node, Integer> lastNodes = new HashMap<>();
             Map<Node, Integer> lastNodesSorted = new TreeMap<>(

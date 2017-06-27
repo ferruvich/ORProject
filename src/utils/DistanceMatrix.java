@@ -2,11 +2,9 @@ package utils;
 
 import core.Node;
 import core.TSPInstance;
-import exceptions.DistanceMapException;
+import exceptions.DistanceMatrixException;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Danieru on 06/06/2017.
@@ -36,17 +34,17 @@ public class DistanceMatrix {
         }
     }
 
-    public Double getDistance(Node a, Node b) throws DistanceMapException {
+    public Double getDistance(Node a, Node b) throws DistanceMatrixException {
         if(distanceMatrix == null){
-            throw new DistanceMapException("Matrix not initialized properly");
+            throw new DistanceMatrixException("Matrix not initialized properly");
         } else{
             return distanceMatrix[a.getIndex()][b.getIndex()];
         }
     }
 
-    public Double[] getFullDistances(Node n) throws DistanceMapException {
+    public Double[] getFullDistances(Node n) throws DistanceMatrixException {
         if(distanceMatrix == null){
-            throw new DistanceMapException("Matrix not initialized properly");
+            throw new DistanceMatrixException("Matrix not initialized properly");
         } else{
             return distanceMatrix[n.getIndex()];
         }
