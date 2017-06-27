@@ -10,12 +10,18 @@ public class TSPInstance {
     private int totNodes;
     private int totRoutes;
     private int maxCapacity;
+    private ArrayList<Integer> completeTsp;
+    private ArrayList<Integer> lineHaulTsp;
+    private ArrayList<Integer> backHaulTsp;
     private ArrayList<Node> nodes;
 
     public TSPInstance(){
         this.totNodes = 0;
         this.totRoutes = 0;
         this.maxCapacity = 0;
+        this.completeTsp = new ArrayList<>();
+        this.lineHaulTsp = new ArrayList<>();
+        this.backHaulTsp = new ArrayList<>();
         this.nodes = new ArrayList<>();
     }
 
@@ -23,6 +29,9 @@ public class TSPInstance {
         this.totNodes = totNodes;
         this.totRoutes = totRoutes;
         this.maxCapacity = maxCapacity;
+        this.completeTsp = new ArrayList<>();
+        this.lineHaulTsp = new ArrayList<>();
+        this.backHaulTsp = new ArrayList<>();
         this.nodes = new ArrayList<>();
     }
 
@@ -58,7 +67,27 @@ public class TSPInstance {
         this.nodes = nodes;
     }
 
-    public void addNode(Node node){
-        this.nodes.add(node);
+    public ArrayList<Integer> getCompleteTsp() {
+        return completeTsp;
+    }
+
+    public void setCompleteTsp(ArrayList<Integer> completeTsp) {
+        this.completeTsp = completeTsp;
+    }
+
+    public ArrayList<Integer> getLineHaulTsp() {
+        return lineHaulTsp;
+    }
+
+    public void setLineHaulTsp(ArrayList<Integer> lineHaulTsp) {
+        this.lineHaulTsp = lineHaulTsp;
+    }
+
+    public ArrayList<Integer> getBackHaulTsp() {
+        return backHaulTsp;
+    }
+
+    public void setBackHaulTsp(ArrayList<Integer> backHaulTsp) {
+        this.backHaulTsp = backHaulTsp;
     }
 }
