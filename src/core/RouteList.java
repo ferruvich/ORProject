@@ -40,7 +40,7 @@ public class RouteList {
             int index = rand.nextInt(linehaulNodes.size());
             int distanceSupported = (linehaulNodes.size()/instance.getTotRoutes())-1;
 
-            //Controlliamo che il nodo sia distante il tanto giusto
+            //Controlliamo che il nodo abbia almeno la distanza prefissata
             for(Route other: routeList){
                 boolean ok = false;
                 int loops = 0;
@@ -91,6 +91,7 @@ public class RouteList {
             }
         }
 
+        //Aggiungiamo i nodi backhaul
         for(Node n: backhaulNodes){
             Map<Node, Integer> lastNodes = new HashMap<>();
             Map<Node, Integer> lastNodesSorted = new TreeMap<>(
@@ -114,6 +115,11 @@ public class RouteList {
                     break;
                 }
             }
+        }
+
+        //Finiamo, aggiungendo il magazzino a fine route
+        for(Route r: routeList){
+            r.addToRoute(nodes.get(0));
         }
     }
 
