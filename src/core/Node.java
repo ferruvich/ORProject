@@ -58,4 +58,28 @@ public class Node {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Node node = (Node) o;
+
+        if (getIndex() != node.getIndex()) return false;
+        if (getXcoord() != node.getXcoord()) return false;
+        if (getYcoord() != node.getYcoord()) return false;
+        if (getCapacity() != node.getCapacity()) return false;
+        return getType() != null ? getType().equals(node.getType()) : node.getType() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getIndex();
+        result = 31 * result + getXcoord();
+        result = 31 * result + getYcoord();
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
+        result = 31 * result + getCapacity();
+        return result;
+    }
 }

@@ -34,12 +34,20 @@ public class Route{
         closed = true;
     }
 
-    public void updateCost(Node previous, Node n){
+    private void updateCost(Node previous, Node n){
         cost += DistanceMatrix.getInstance().getDistance(previous, n);
         if(n.getType().equals("Linehaul")){
             totLinehaul+=n.getCapacity();
         }else if(n.getType().equals("Backhaul")){
             totBackhaul+=n.getCapacity();
+        }
+    }
+
+    public void updateCost(){
+        this.cost = 0.0;
+        
+        for(int i=0;i<nodes.size()-1;i++){
+            cost += DistanceMatrix.getInstance().getDistance(nodes.get(i), nodes.get(i+1));
         }
     }
 
@@ -61,5 +69,13 @@ public class Route{
 
     public ArrayList<Node> getNodes() {
         return this.nodes;
+    }
+
+    public void swapNodes(int indexA, int indexB){
+        Node a = this.nodes.get(indexA);
+        Node b = this.nodes.get(indexB);
+
+        nodes.set(indexA, b);
+        nodes.set(indexB, a);
     }
 }
