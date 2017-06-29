@@ -51,6 +51,30 @@ public class Route{
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Route route = (Route) o;
+
+        if (getTotLinehaul() != route.getTotLinehaul()) return false;
+        if (getTotBackhaul() != route.getTotBackhaul()) return false;
+        if (isClosed() != route.isClosed()) return false;
+        if (getNodes() != null ? !getNodes().equals(route.getNodes()) : route.getNodes() != null) return false;
+        return getCost() != null ? getCost().equals(route.getCost()) : route.getCost() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getNodes() != null ? getNodes().hashCode() : 0;
+        result = 31 * result + (getCost() != null ? getCost().hashCode() : 0);
+        result = 31 * result + getTotLinehaul();
+        result = 31 * result + getTotBackhaul();
+        result = 31 * result + (isClosed() ? 1 : 0);
+        return result;
+    }
+
     public boolean isClosed(){
         return this.closed;
     }
@@ -69,13 +93,5 @@ public class Route{
 
     public ArrayList<Node> getNodes() {
         return this.nodes;
-    }
-
-    public void swapNodes(int indexA, int indexB){
-        Node a = this.nodes.get(indexA);
-        Node b = this.nodes.get(indexB);
-
-        nodes.set(indexA, b);
-        nodes.set(indexB, a);
     }
 }

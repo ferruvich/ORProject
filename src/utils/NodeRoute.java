@@ -5,12 +5,10 @@ package utils;
  */
 public class NodeRoute {
     private int index;
-    private int numRoute;
     private Double cost;
 
-    public NodeRoute(int index, int numRoute, Double cost){
+    public NodeRoute(int index, Double cost){
         this.setIndex(index);
-        this.setNumRoute(numRoute);
         this.setCost(cost);
     }
 
@@ -20,14 +18,6 @@ public class NodeRoute {
 
     public void setIndex(int index) {
         this.index = index;
-    }
-
-    public int getNumRoute() {
-        return numRoute;
-    }
-
-    public void setNumRoute(int numRoute) {
-        this.numRoute = numRoute;
     }
 
     public Double getCost() {
