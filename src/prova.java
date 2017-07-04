@@ -27,16 +27,16 @@ public class prova{
         Best best = new Best(routes);
         System.out.print("\n");
 
-        Map<Node, List<NodeRoute>> result1 = best.bestOnSameRoute(routes.get(0), Best.BEST_EXCHANGE);
-        Map<Node, List<NodeRoute>> result2 = best.bestOnSameRoute(routes.get(0), Best.BEST_RELOCATE);
+//        Map<Node, List<NodeRoute>> result1 = best.bestOnSameRoute(routes.get(0), Best.BEST_EXCHANGE);
+//        Map<Node, List<NodeRoute>> result2 = best.bestOnSameRoute(routes.get(0), Best.BEST_RELOCATE);
 
 //        stampa(routes);
 
 //        System.out.print("\n");
-        Map<Node, List<NodeRoute>> result3 = best.bestBetweenRoutes(routes.get(0), Best.BEST_EXCHANGE);
-        Map<Node, List<NodeRoute>> result4 = best.bestBetweenRoutes(routes.get(0), Best.BEST_RELOCATE);
+//        Map<Node, List<NodeRoute>> result3 = best.bestBetweenRoutes(routes.get(0), Best.BEST_EXCHANGE);
+        Map<Node, List<NodeRoute>> result4 = best.run(routes.get(0), Best.BEST_RELOCATE);
 
-//        stampa(routes);
+        stampa(routes);
 //
 //
 //        System.out.println("Dimensione mappa: " + result.keySet().size());

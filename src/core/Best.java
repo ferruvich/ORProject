@@ -45,50 +45,14 @@ public class Best {
         }
     }
 
-    public Map<Node, List<NodeRoute>> bestOnSameRoute(Route route, int type) throws IOException {
-        int i, j;
-        Map<Node, List<NodeRoute>> swapMap = new HashMap<>();
-        Double previousCost, newCost;
-
-        List<Node> nodeList = route.getNodes();
-        Route best = route;
-
-        // Scambio ogni nodo con gli altri nodi presenti nella stesso route
-        for (i = 1; i < nodeList.size() - 1; i++) {
-            Node a = best.getNodes().get(i);
-            List<NodeRoute> costList = new ArrayList<>();
-
-//            System.out.println("Nodo a: " + a.getIndex());
-
-            for (j = 1; j < nodeList.size() - 1; j++) {
-                Node b = best.getNodes().get(j);
-
-                // Se quel nodo non si sta paragonando a se stesso e se soddisfa il vincolo di uguaglianza
-                // (non si possono scambiare nodi Backhaul con nodi Linehaul)
-                if ((!a.equals(b)) && a.getType().equals(b.getType())) {
-//                    System.out.println("\tNodo b: " + b.getIndex());
-
-                    previousCost = getTotalCost();
-                    newCost = type == BEST_EXCHANGE ? newExchangeRouteCost(route, route, i, j, a, b) : newRelocateRouteCost(route, route, i, j, a);
-
-                    if(newCost < previousCost){
-                        costList.add(new NodeRoute(b.getIndex(), newCost));
-                    }
-                }
-            }
-            swapMap.put(a, costList);
-        }
-
-        return swapMap;
-    }
-
     /**
      * This method takes in input a route, it takes every node of that route and it constructs
-     * the Map<Node, List<NodeRoute>> swapping the node that takes with everyone in the other routes
-     * @return swapMap
+     * the Map<Node, List<NodeRoute>> swapping or relocating the node that takes with everyone in the other routes
+     * @return swapMap A map with the Node as key and a List of NodeRoute as value. The NodeRoute has as attributes
+     * the index of the node subject to the swap or the relocate with the key and the cost updated
      */
 
-    public Map<Node, List<NodeRoute>> bestBetweenRoutes(Route route, int type) throws IOException {
+    public Map<Node, List<NodeRoute>> run(Route route, int type) {
         int i, j;
         ArrayList<Node> list = route.getNodes();
         Map<Node, List<NodeRoute>> swapMap = new HashMap<>();
@@ -100,22 +64,19 @@ public class Best {
 
             System.out.println("Nodo a: " + a.getIndex());
 
-
             for(Route r : routes){
-                if(!route.equals(r)) {
-                    for(j=1;j<r.getNodes().size()-1;j++){
-                        Node b = r.getNodes().get(j);
+                for (j = 1; j < r.getNodes().size() - 1; j++) {
+                    Node b = r.getNodes().get(j);
 
-                        if(b.getType().equals(a.getType())) {
-//                            System.out.println("\tNodo b: " + b.getIndex());
+                    if (b.getType().equals(a.getType()) && (!a.equals(b))) {
+                        System.out.println("\tNodo b: " + b.getIndex());
 
-                            previousCost = getTotalCost();
-                            newCost = type == BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j, a, b) : newRelocateRouteCost(route, r, i, j, a);
+                        previousCost = getTotalCost();
+                        newCost = type == BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j, a, b) : newRelocateRouteCost(route, r, i, j, a);
 
-                            if(newCost < previousCost){
-                                costList.add(new NodeRoute(b.getIndex(), newCost));
-//                                System.out.println("\t\tInserisco");
-                            }
+                        if (newCost < previousCost) {
+                            costList.add(new NodeRoute(b.getIndex(), newCost));
+                            System.out.println("\t\tInserisco");
                         }
                     }
                 }
@@ -136,9 +97,13 @@ public class Best {
      * @param b Nodo candidate to reduce the cost
      * @return New cost after the swap
      */
-    public Double newExchangeRouteCost(Route route1, Route route2, int indexA, int indexB, Node a, Node b){
+    public Double newExchangeRouteCost(Route route1, Route route2, int indexA, int indexB, Node a, Node b) {
         Double newCost = 0.0;
         updateRouteCost();
+
+//        printRoute(route1);
+//        printRoute(route2);
+//        System.in.read();
 
         route1.getNodes().set(indexA, b);
         route2.getNodes().set(indexB, a);
@@ -162,7 +127,7 @@ public class Best {
      * @param a Node subject to relocating
      * @return
      */
-    public Double newRelocateRouteCost(Route route1, Route route2, int indexA, int indexB, Node a) throws IOException {
+    public Double newRelocateRouteCost(Route route1, Route route2, int indexA, int indexB, Node a) {
         Double newCost = 0.0;
         updateRouteCost();
 
