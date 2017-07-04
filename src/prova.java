@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class prova{
     public static void main(String[] args) throws IOException {
-        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/A1.json");
+        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/N1.json");
         System.out.println("Max carico " + in.getMaxCapacity());
         DistanceMatrix.getInstance().initialize(in);
         RouteList routeList = new RouteList();
@@ -22,35 +22,36 @@ public class prova{
         ArrayList<Route> routes = routeList.getRoutes();
         System.out.println("Route totali: " + routes.size());
 
-        //System.out.print("Nodi percorso 0: ");
-        for(Route route : routes){
-            System.out.print("Numero percorso: " + (i++) + ": ");
-            for(Node n : route.getNodes()) {
-                System.out.print(n.getIndex() + " ");
-            }
-            System.out.print("\n");
-        }
+        stampa(routes);
 
-        BestExchange bestExchange = new BestExchange(routes);
+        Best best = new Best(routes);
         System.out.print("\n");
 
-        Map<Node, List<NodeRoute>> result = bestExchange.exchangeSameRoute(routes.get(0));
+        Map<Node, List<NodeRoute>> result1 = best.bestOnSameRoute(routes.get(0), Best.BEST_EXCHANGE);
+        Map<Node, List<NodeRoute>> result2 = best.bestOnSameRoute(routes.get(0), Best.BEST_RELOCATE);
 
+//        stampa(routes);
 
-        System.out.println("Dimensione mappa: " + result.keySet().size());
+//        System.out.print("\n");
+        Map<Node, List<NodeRoute>> result3 = best.bestBetweenRoutes(routes.get(0), Best.BEST_EXCHANGE);
+        Map<Node, List<NodeRoute>> result4 = best.bestBetweenRoutes(routes.get(0), Best.BEST_RELOCATE);
 
-        Map<Node, List<NodeRoute>> newres = bestExchange.exchangeBetweenRoute(routes.get(0));
-
-        System.out.println("Costo prima dell'algoritmo: " + routes.get(0).getCost());
-
-        for(Node node : newres.keySet()){
-            List<NodeRoute> nodeRoutes = newres.get(node);
-            System.out.println("Lista del nodo " + node.getIndex() + ": ");
-
-            for(NodeRoute nodeRoute : nodeRoutes){
-                System.out.println("\tlo scambio con " + nodeRoute.getIndex() + " ha ridotto il costo a " + nodeRoute.getCost());
-            }
-        }
+//        stampa(routes);
+//
+//
+//        System.out.println("Dimensione mappa: " + result.keySet().size());
+//
+//        Map<Node, List<NodeRoute>> newres = best.bestBetweenRoutes(routes.get(0), Best.BEST_RELOCATE);
+//        System.out.println("Costo pre-relocate: " + best.getCost());
+//
+//        for(Node node : newres.keySet()){
+//            List<NodeRoute> nodeRoutes = newres.get(node);
+//            System.out.println("Lista del nodo " + node.getIndex() + ": ");
+//
+//            for(NodeRoute nodeRoute : nodeRoutes){
+//                System.out.println("\tlo scambio con " + nodeRoute.getIndex() + " ha ridotto il costo a " + nodeRoute.getCost());
+//            }
+//        }
 
 //        for(Node n : result.keySet()){
 //            System.out.println("\nCosti nodo " + n.getIndex());
@@ -60,6 +61,20 @@ public class prova{
 //            }
 //            System.in.read();
 //        }
+
+    }
+
+    public static void stampa(List<Route> routes){
+        int i=0;
+
+        System.out.println();
+        for(Route route : routes){
+            System.out.print("Numero percorso: " + (i++) + ": ");
+            for(Node n : route.getNodes()) {
+                System.out.print(n.getIndex() + " ");
+            }
+            System.out.print("\n");
+        }
 
     }
 }
