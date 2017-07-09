@@ -52,15 +52,14 @@ public class Best {
      * the index of the node subject to the swap or the relocate with the key and the cost updated
      */
 
-    public Map<Node, List<NodeRoute>> run(Route route, int type) {
+    public NodeRoute run(Route route, int type) {
         int i, j;
+        NodeRoute nodeRoute = null;
         ArrayList<Node> list = route.getNodes();
-        Map<Node, List<NodeRoute>> swapMap = new HashMap<>();
         Double previousCost, newCost;
 
         for(i=1;i<list.size()-1;i++){
             Node a = list.get(i);
-            List<NodeRoute> costList = new ArrayList<>();
 
             System.out.println("Nodo a: " + a.getIndex());
 
@@ -73,18 +72,24 @@ public class Best {
 
                         previousCost = getTotalCost();
                         newCost = type == BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j, a, b) : newRelocateRouteCost(route, r, i, j, a);
+                        double costToUpdate = previousCost - newCost;
 
                         if (newCost < previousCost) {
-                            costList.add(new NodeRoute(b.getIndex(), newCost));
+                            if(nodeRoute == null){
+                                nodeRoute = new NodeRoute(a.getIndex(), b.getIndex(), (previousCost - newCost));
+                            } else {
+                                if(costToUpdate < nodeRoute.getCost()){
+                                    nodeRoute = new NodeRoute(a.getIndex(), b.getIndex(), costToUpdate);
+                                }
+                            }
                             System.out.println("\t\tInserisco");
                         }
                     }
                 }
             }
-            swapMap.put(a, costList);
         }
 
-        return swapMap;
+        return nodeRoute;
     }
 
     /**
