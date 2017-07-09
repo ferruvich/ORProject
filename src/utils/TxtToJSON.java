@@ -6,8 +6,12 @@ package utils;
  * for better performance and usability in project
  */
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class TxtToJSON{
 

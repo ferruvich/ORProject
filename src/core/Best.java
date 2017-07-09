@@ -3,7 +3,6 @@ package core;
 import utils.NodeRoute;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ibbus on 22/06/2017.
@@ -13,43 +12,19 @@ public class Best {
 
     public static final int BEST_RELOCATE = 0;
     public static final int BEST_EXCHANGE = 1;
-    public List<Route> routes;
-    private double totalCost;
+    public RouteList routeList;
 
-    public Best(List<Route> route) {
-        this.routes = route;
-        this.totalCost = getTotalCost();
-    }
-
-    private double getTotalCost() {
-        this.totalCost = 0.0;
-
-        for (Route route : routes) {
-            route.updateCost();
-            this.totalCost += route.getCost();
-        }
-
-        return this.totalCost;
-    }
-
-    public double getCost() {
-        return this.totalCost;
-    }
-
-    private void updateRouteCost() {
-        for (Route route : routes) {
-            route.updateCost();
-        }
+    public Best(RouteList routeList) {
+        this.routeList = routeList;
     }
 
     /**
      * This method takes in input a route, it takes every node of that route and it constructs
-     * the Map<Node, List<NodeRoute>> swapping or relocating the node that takes with everyone in the other routes
+     * the Map<Node, List<NodeRoute>> swapping or relocating the node that takes with everyone in the other routeList
      *
      * @return swapMap A map with the Node as key and a List of NodeRoute as value. The NodeRoute has as attributes
      * the index of the node subject to the swap or the relocate with the key and the cost updated
      */
-
     public NodeRoute run(Route route, int type) {
         NodeRoute nodeRoute = null;
         ArrayList<Node> nodes = route.getNodes();
@@ -59,15 +34,15 @@ public class Best {
 
             //System.out.println("Nodo a: " + a.getIndex());
 
-            for (Route r : routes) {
+            for (Route r : routeList.getRoutes()) {
                 for (int j = 1; j < r.getNodes().size() - 1; j++) {
                     Node b = r.getNodes().get(j);
 
                     if (b.getType().equals(a.getType()) && (!a.equals(b))) {
                         //System.out.println("\tNodo b: " + b.getIndex());
 
-                        Double previousCost = getTotalCost();
-                        Double newCost = type == BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j, a, b) : newRelocateRouteCost(route, r, i, j, a);
+                        Double previousCost = routeList.updateTotalCost();
+                        Double newCost = type == Best.BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j, a, b) : newRelocateRouteCost(route, r, i, j, a);
 
                         if (newCost < previousCost) {
                             double gain = previousCost - newCost;
@@ -98,20 +73,20 @@ public class Best {
      * @param b      Node candidate to reduce the cost
      * @return New cost after the swap
      */
-    public Double newExchangeRouteCost(Route route1, Route route2, int indexA, int indexB, Node a, Node b) {
-        Double gain;
+    public double newExchangeRouteCost(Route route1, Route route2, int indexA, int indexB, Node a, Node b) {
+        double gain;
 
-        updateRouteCost();
+        routeList.updateEachRouteCost();
 
         route1.getNodes().set(indexA, b);
         route2.getNodes().set(indexB, a);
 
-        gain = getTotalCost();
+        gain = routeList.updateTotalCost();
 
         route1.getNodes().set(indexA, a);
         route2.getNodes().set(indexB, b);
 
-        updateRouteCost();
+        routeList.updateEachRouteCost();
 
         return gain;
     }
@@ -124,21 +99,22 @@ public class Best {
      * @param a      Node subject to relocating
      * @return
      */
-    public Double newRelocateRouteCost(Route route1, Route route2, int indexA, int indexB, Node a) {
-        Double newCost = 0.0;
-        updateRouteCost();
+    public double newRelocateRouteCost(Route route1, Route route2, int indexA, int indexB, Node a) {
+        double gain;
+
+        routeList.updateEachRouteCost();
 
         route1.getNodes().remove(indexA);
         route2.getNodes().add(indexB, a);
 
-        newCost = getTotalCost();
+        gain = routeList.updateTotalCost();
 
         route2.getNodes().remove(indexB);
         route1.getNodes().add(indexA, a);
 
-        updateRouteCost();
+        routeList.updateEachRouteCost();
 
-        return newCost;
+        return gain;
     }
 
     public void printRoute(Route route) {
