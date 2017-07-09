@@ -6,13 +6,13 @@ package utils;
 public class NodeRoute {
     private int indexFirst;
     private int indexSecond;
-    private Double cost;
+    private Double gain;
 
 
-    public NodeRoute(int indexFirst, int indexSecond, Double cost){
-        this.setIndexFirst(indexFirst);
-        this.setIndexSecond(indexSecond);
-        this.setCost(cost);
+    public NodeRoute(int indexFirst, int indexSecond, Double gain) {
+        this.indexFirst = indexFirst;
+        this.indexSecond = indexSecond;
+        this.gain = gain;
     }
 
 
@@ -32,11 +32,11 @@ public class NodeRoute {
         this.indexSecond = indexSecond;
     }
 
-    public Double getCost() {
-        return cost;
+    public Double getGain() {
+        return gain;
     }
 
-    public void setCost(Double cost) {
-        this.cost = cost;
+    public void setGain(Double gain) {
+        this.gain = gain;
     }
 }
