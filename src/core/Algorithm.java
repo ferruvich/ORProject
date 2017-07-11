@@ -33,16 +33,16 @@ public class Algorithm implements Callable<RouteList> {
             if (type == Algorithm.ALGORITHM_ONE) {
                 for (int i = 0; i < routes.size(); i++) {
                     NodeRoute result = best.run(routes.get(i), Best.BEST_RELOCATE);
-                    // Apply Relocate
+                    //TODO: Apply Relocate
                     NodeRoute result2 = best.run(routes.get(i), Best.BEST_EXCHANGE);
-                    // Apply Exchange
+                    //TODO: Apply Exchange
                 }
             } else {
                 for (int i = 0; i < routes.size(); i++) {
                     NodeRoute result = best.run(routes.get(i), Best.BEST_EXCHANGE);
-                    // Apply Exchange
+                    //TODO: Apply Exchange
                     NodeRoute result2 = best.run(routes.get(i), Best.BEST_RELOCATE);
-                    // Apply Relocate
+                    //TODO: Apply Relocate
                 }
             }
         } catch (Exception ex) {
