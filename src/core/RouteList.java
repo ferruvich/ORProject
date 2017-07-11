@@ -4,9 +4,6 @@ import utils.DistanceMatrix;
 
 import java.util.*;
 
-/**
- * Created by Danieru on 06/06/2017.
- */
 public class RouteList {
 
     private ArrayList<Route> routes;

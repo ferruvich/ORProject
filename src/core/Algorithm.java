@@ -1,6 +1,5 @@
 package core;
 
-import utils.DistanceMatrix;
 import utils.NodeRoute;
 
 import java.util.ArrayList;
@@ -27,16 +26,11 @@ public class Algorithm implements Callable<RouteList> {
         RouteList routeList = new RouteList();
 
         try {
-            DistanceMatrix.getInstance().initialize(in);
-
             routeList.initialize(in);
-
             ArrayList<Route> routes = routeList.getRoutes();
 
-            //print(routeList);
-
             Best best = new Best(routeList);
-            if (type == ALGORITHM_ONE) {
+            if (type == Algorithm.ALGORITHM_ONE) {
                 for (int i = 0; i < routes.size(); i++) {
                     NodeRoute result = best.run(routes.get(i), Best.BEST_RELOCATE);
                     // Apply Relocate
@@ -52,9 +46,8 @@ public class Algorithm implements Callable<RouteList> {
                 }
             }
         } catch (Exception ex) {
-            System.out.println(name + ex.getMessage());
+            System.out.println("[" + name + "]" + " Exception Message" + ex.getMessage());
         }
-        //print(best.routeList);
 
         return routeList;
     }

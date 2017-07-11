@@ -1,8 +1,5 @@
 package utils;
 
-/**
- * Created by ibbus on 27/06/2017.
- */
 public class NodeRoute {
     private int indexFirst;
     private int indexSecond;

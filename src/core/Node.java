@@ -1,8 +1,5 @@
 package core;
 
-/**
- * Created by Danieru on 30/05/2017.
- */
 public class Node {
 
     private int index;
@@ -11,7 +8,7 @@ public class Node {
     private String type;
     private int capacity;
 
-    public Node(int index, int xcoord, int ycoord, String type, int capacity){
+    public Node(int index, int xcoord, int ycoord, String type, int capacity) {
         this.index = index;
         this.xcoord = xcoord;
         this.ycoord = ycoord;

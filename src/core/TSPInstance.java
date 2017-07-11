@@ -2,9 +2,6 @@ package core;
 
 import java.util.ArrayList;
 
-/**
- * Created by Danieru on 30/05/2017.
- */
 public class TSPInstance {
 
     private int totNodes;
@@ -15,7 +12,7 @@ public class TSPInstance {
     private ArrayList<Integer> backHaulTsp;
     private ArrayList<Node> nodes;
 
-    public TSPInstance(){
+    public TSPInstance() {
         this.totNodes = 0;
         this.totRoutes = 0;
         this.maxCapacity = 0;
@@ -25,7 +22,7 @@ public class TSPInstance {
         this.nodes = new ArrayList<>();
     }
 
-    public TSPInstance(int totNodes, int totRoutes, int maxCapacity){
+    public TSPInstance(int totNodes, int totRoutes, int maxCapacity) {
         this.totNodes = totNodes;
         this.totRoutes = totRoutes;
         this.maxCapacity = maxCapacity;

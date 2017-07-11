@@ -1,4 +1,5 @@
 import core.*;
+import utils.DistanceMatrix;
 import utils.JsonReader;
 
 import java.util.ArrayList;
@@ -8,14 +9,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-/**
- * Created by Danieru on 30/05/2017.
- */
 public class Main {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
         TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/N1.json");
+        DistanceMatrix.getInstance().initialize(in);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
@@ -29,7 +28,7 @@ public class Main {
 
         List<FutureTask<RouteList>> algorithmTwoFutures = new ArrayList<FutureTask<RouteList>>();
         for (int j = 0; j < Main.NUMBER_OF_ITERATION; j++) {
-            Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 11));
+            Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 1));
             FutureTask<RouteList> futureTask = new FutureTask<RouteList>(algorithmTwo);
             algorithmTwoFutures.add(futureTask);
             executor.execute(futureTask);

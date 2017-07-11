@@ -4,9 +4,6 @@ import utils.DistanceMatrix;
 
 import java.util.ArrayList;
 
-/**
- * Created by Danieru on 06/06/2017.
- */
 public class Route {
     private ArrayList<Node> nodes;
     private Double cost = 0.0;

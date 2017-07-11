@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 
-/**
- * Created by Ferruvich on 30/05/2017.
- */
 public class JsonReader {
 
     private static JsonReader instance = null;

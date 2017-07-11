@@ -6,15 +6,12 @@ import exceptions.DistanceMatrixException;
 
 import java.util.List;
 
-/**
- * Created by Danieru on 06/06/2017.
- */
 public class DistanceMatrix {
     private static DistanceMatrix instance = null;
     private static Double[][] distanceMatrix = null;
 
-    public static DistanceMatrix getInstance(){
-        if(instance == null){
+    public static DistanceMatrix getInstance() {
+        if (instance == null) {
             instance = new DistanceMatrix();
             return instance;
         }
@@ -35,17 +32,17 @@ public class DistanceMatrix {
     }
 
     public Double getDistance(Node a, Node b) throws DistanceMatrixException {
-        if(distanceMatrix == null){
+        if (distanceMatrix == null) {
             throw new DistanceMatrixException("Matrix not initialized properly");
-        } else{
+        } else {
             return distanceMatrix[a.getIndex()][b.getIndex()];
         }
     }
 
     public Double[] getFullDistances(Node n) throws DistanceMatrixException {
-        if(distanceMatrix == null){
+        if (distanceMatrix == null) {
             throw new DistanceMatrixException("Matrix not initialized properly");
-        } else{
+        } else {
             return distanceMatrix[n.getIndex()];
         }
     }

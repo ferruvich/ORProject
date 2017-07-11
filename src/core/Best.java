@@ -4,10 +4,6 @@ import utils.NodeRoute;
 
 import java.util.ArrayList;
 
-/**
- * Created by ibbus on 22/06/2017.
- * AsyncTask, Listenable Future
- */
 public class Best {
 
     public static final int BEST_RELOCATE = 0;
