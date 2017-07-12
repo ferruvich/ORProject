@@ -3,10 +3,10 @@ package utils;
 public class NodeRoute {
     private int indexFirst;
     private int indexSecond;
-    private Double gain;
+    private double gain;
 
 
-    public NodeRoute(int indexFirst, int indexSecond, Double gain) {
+    public NodeRoute(int indexFirst, int indexSecond, double gain) {
         this.indexFirst = indexFirst;
         this.indexSecond = indexSecond;
         this.gain = gain;
@@ -29,11 +29,11 @@ public class NodeRoute {
         this.indexSecond = indexSecond;
     }
 
-    public Double getGain() {
+    public double getGain() {
         return gain;
     }
 
-    public void setGain(Double gain) {
+    public void setGain(double gain) {
         this.gain = gain;
     }
 }

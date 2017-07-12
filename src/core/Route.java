@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Route {
     private ArrayList<Node> nodes;
-    private Double cost = 0.0;
+    private double cost = 0.0;
     private int totLinehaul = 0;
     private int totBackhaul = 0;
     private boolean closed = false;
@@ -89,5 +89,9 @@ public class Route {
 
     public ArrayList<Node> getNodes() {
         return this.nodes;
+    }
+
+    public Node getNodeByIndex(int index) {
+        return this.nodes.get(index);
     }
 }

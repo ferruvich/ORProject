@@ -37,8 +37,8 @@ public class Best {
                     if (b.getType().equals(a.getType()) && (!a.equals(b))) {
                         //System.out.println("\tNodo b: " + b.getIndex());
 
-                        Double previousCost = routeList.updateTotalCost();
-                        Double newCost = type == Best.BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j, a, b) : newRelocateRouteCost(route, r, i, j, a);
+                        double previousCost = routeList.updateTotalCost();
+                        double newCost = type == Best.BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j) : newRelocateRouteCost(route, r, i, j);
 
                         if (newCost < previousCost) {
                             double gain = previousCost - newCost;
@@ -61,26 +61,26 @@ public class Best {
     }
 
     /**
-     * @param route1 First route interested in the swap
-     * @param route2 Second route interested in the swap
-     * @param indexA Index of the first node interested in the swap
-     * @param indexB Index of the second node interested in the swap
-     * @param a      Node subject to the swaps
-     * @param b      Node candidate to reduce the cost
+     * @param firstRoute First route interested in the swap
+     * @param secondRoute Second route interested in the swap
+     * @param firstNodeIndex Index of the first node interested in the swap
+     * @param secondNodeIndex Index of the second node interested in the swap
      * @return New cost after the swap
      */
-    public double newExchangeRouteCost(Route route1, Route route2, int indexA, int indexB, Node a, Node b) {
+    public double newExchangeRouteCost(Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
         double gain;
 
         routeList.updateEachRouteCost();
 
-        route1.getNodes().set(indexA, b);
-        route2.getNodes().set(indexB, a);
+        Node firstNode = firstRoute.getNodeByIndex(firstNodeIndex);
+        Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
+        firstRoute.getNodes().set(firstNodeIndex, secondNode);
+        secondRoute.getNodes().set(secondNodeIndex, firstNode);
 
         gain = routeList.updateTotalCost();
 
-        route1.getNodes().set(indexA, a);
-        route2.getNodes().set(indexB, b);
+        firstRoute.getNodes().set(firstNodeIndex, firstNode);
+        secondRoute.getNodes().set(secondNodeIndex, secondNode);
 
         routeList.updateEachRouteCost();
 
@@ -88,25 +88,25 @@ public class Best {
     }
 
     /**
-     * @param route1 First route interested in relocating
-     * @param route2 Second route interested in relocating
-     * @param indexA Index of the node subject to relocating
-     * @param indexB Index of the node where the node a has to be relocated
-     * @param a      Node subject to relocating
-     * @return
+     * @param firstRoute First route interested in relocating
+     * @param secondRoute Second route interested in relocating
+     * @param firstNodeIndex Index of the node subject to relocating
+     * @param secondNodeIndex Index of the node where the node a has to be relocated
+     * @return New cost after the swap
      */
-    public double newRelocateRouteCost(Route route1, Route route2, int indexA, int indexB, Node a) {
+    public double newRelocateRouteCost(Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
         double gain;
 
         routeList.updateEachRouteCost();
 
-        route1.getNodes().remove(indexA);
-        route2.getNodes().add(indexB, a);
+        Node a = firstRoute.getNodeByIndex(firstNodeIndex);
+        firstRoute.getNodes().remove(firstNodeIndex);
+        secondRoute.getNodes().add(secondNodeIndex, a);
 
         gain = routeList.updateTotalCost();
 
-        route2.getNodes().remove(indexB);
-        route1.getNodes().add(indexA, a);
+        secondRoute.getNodes().remove(secondNodeIndex);
+        firstRoute.getNodes().add(firstNodeIndex, a);
 
         routeList.updateEachRouteCost();
 

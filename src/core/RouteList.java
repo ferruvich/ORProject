@@ -7,7 +7,7 @@ import java.util.*;
 public class RouteList {
 
     private ArrayList<Route> routes;
-    private Double totalCost = Double.MAX_VALUE;
+    private double totalCost = Double.MAX_VALUE;
 
     public RouteList() {
         this.routes = new ArrayList<>();
@@ -62,56 +62,10 @@ public class RouteList {
         }
 
         //Inseriamo gli altri nodi linehaul
-        for (Node n : linehaulNodes) {
-            Map<Node, Integer> lastNodes = new HashMap<>();
-            Map<Node, Integer> lastNodesSorted = new TreeMap<>(
-                    new Comparator<Node>() {
-                        @Override
-                        public int compare(Node o1, Node o2) {
-                            double dist1 = DistanceMatrix.getInstance().getDistance(o1, n);
-                            double dist2 = DistanceMatrix.getInstance().getDistance(o2, n);
-                            return (int) (dist1 - dist2);
-                        }
-                    }
-            );
-            int i = 0;
-            for (Route r : routes) {
-                lastNodes.put(r.getNodes().get(r.getNodes().size() - 1), i++);
-            }
-            lastNodesSorted.putAll(lastNodes);
-            for (Node toCkeck : lastNodesSorted.keySet()) {
-                if (routes.get(lastNodes.get(toCkeck)).getTotLinehaul() + n.getCapacity() <= instance.getMaxCapacity()) {
-                    routes.get(lastNodes.get(toCkeck)).addToRoute(n);
-                    break;
-                }
-            }
-        }
+        this.addNodes(instance, linehaulNodes);
 
         //Aggiungiamo i nodi backhaul
-        for (Node n : backhaulNodes) {
-            Map<Node, Integer> lastNodes = new HashMap<>();
-            Map<Node, Integer> lastNodesSorted = new TreeMap<>(
-                    new Comparator<Node>() {
-                        @Override
-                        public int compare(Node o1, Node o2) {
-                            double dist1 = DistanceMatrix.getInstance().getDistance(o1, n);
-                            double dist2 = DistanceMatrix.getInstance().getDistance(o2, n);
-                            return (int) (dist1 - dist2);
-                        }
-                    }
-            );
-            int i = 0;
-            for (Route r : routes) {
-                lastNodes.put(r.getNodes().get(r.getNodes().size() - 1), i++);
-            }
-            lastNodesSorted.putAll(lastNodes);
-            for (Node toCkeck : lastNodesSorted.keySet()) {
-                if (routes.get(lastNodes.get(toCkeck)).getTotBackhaul() + n.getCapacity() <= instance.getMaxCapacity()) {
-                    routes.get(lastNodes.get(toCkeck)).addToRoute(n);
-                    break;
-                }
-            }
-        }
+        this.addNodes(instance, backhaulNodes);
 
         //Finiamo, aggiungendo il magazzino a fine route
         for (Route r : routes) {
@@ -119,15 +73,39 @@ public class RouteList {
         }
     }
 
+    private void addNodes(TSPInstance instance, ArrayList<Node> linehaulNodes) {
+        for (Node n : linehaulNodes) {
+            Map<Node, Integer> lastNodes = new HashMap<>();
+            Map<Node, Integer> lastNodesSorted = new TreeMap<>(
+                    (o1, o2) -> {
+                        double dist1 = DistanceMatrix.getInstance().getDistance(o1, n);
+                        double dist2 = DistanceMatrix.getInstance().getDistance(o2, n);
+                        return (int) (dist1 - dist2);
+                    }
+            );
+            int i = 0;
+            for (Route r : routes) {
+                lastNodes.put(r.getNodes().get(r.getNodes().size() - 1), i++);
+            }
+            lastNodesSorted.putAll(lastNodes);
+            for (Node toCheck : lastNodesSorted.keySet()) {
+                if (routes.get(lastNodes.get(toCheck)).getTotLinehaul() + n.getCapacity() <= instance.getMaxCapacity()) {
+                    routes.get(lastNodes.get(toCheck)).addToRoute(n);
+                    break;
+                }
+            }
+        }
+    }
+
     public ArrayList<Route> getRoutes() {
         return this.routes;
     }
 
-    public Double getTotalCost() {
+    public double getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(Double totalCost) {
+    public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
 
