@@ -5,13 +5,13 @@ import utils.NodeRoute;
 import java.util.ArrayList;
 
 public class Best {
+    private RouteList routeList;
+    private Strategy strategy;
 
-    public static final int BEST_RELOCATE = 0;
-    public static final int BEST_EXCHANGE = 1;
-    public RouteList routeList;
 
-    public Best(RouteList routeList) {
+    public Best(RouteList routeList, Strategy strategy) {
         this.routeList = routeList;
+        this.strategy = strategy;
     }
 
     /**
@@ -21,36 +21,30 @@ public class Best {
      * @return swapMap A map with the Node as key and a List of NodeRoute as value. The NodeRoute has as attributes
      * the index of the node subject to the swap or the relocate with the key and the cost updated
      */
-    public NodeRoute run(Route route, int type) {
+    public NodeRoute estimateStrategy(Route route) {
         NodeRoute nodeRoute = null;
         ArrayList<Node> nodes = route.getNodes();
 
         for (int i = 1; i < nodes.size() - 1; i++) {
             Node a = nodes.get(i);
 
-            //System.out.println("Nodo a: " + a.getIndex());
-
             for (Route r : routeList.getRoutes()) {
                 for (int j = 1; j < r.getNodes().size() - 1; j++) {
                     Node b = r.getNodes().get(j);
 
                     if (b.getType().equals(a.getType()) && (!a.equals(b))) {
-                        //System.out.println("\tNodo b: " + b.getIndex());
-
                         double previousCost = routeList.updateTotalCost();
-                        double newCost = type == Best.BEST_EXCHANGE ? newExchangeRouteCost(route, r, i, j) : newRelocateRouteCost(route, r, i, j);
-
+                        double newCost = strategy.estimate(routeList, route, r, i, j);
                         if (newCost < previousCost) {
                             double gain = previousCost - newCost;
 
                             if (nodeRoute == null) {
-                                nodeRoute = new NodeRoute(a.getIndex(), b.getIndex(), gain);
+                                nodeRoute = new NodeRoute(route, r, i, j, gain);
                             } else {
                                 if (gain < nodeRoute.getGain()) {
-                                    nodeRoute = new NodeRoute(a.getIndex(), b.getIndex(), gain);
+                                    nodeRoute = new NodeRoute(route, r, i, j, gain);
                                 }
                             }
-                            //System.out.println("\t\tInserisco");
                         }
                     }
                 }
@@ -60,10 +54,14 @@ public class Best {
         return nodeRoute;
     }
 
+    public RouteList applyStrategy(NodeRoute nodeRoute) {
+        return strategy.apply(routeList, nodeRoute.getFirstRoute(), nodeRoute.getSecondRoute(), nodeRoute.getFirstNodeIndex(), nodeRoute.getSecondNodeIndex());
+    }
+
     /**
-     * @param firstRoute First route interested in the swap
-     * @param secondRoute Second route interested in the swap
-     * @param firstNodeIndex Index of the first node interested in the swap
+     * @param firstRoute      First route interested in the swap
+     * @param secondRoute     Second route interested in the swap
+     * @param firstNodeIndex  Index of the first node interested in the swap
      * @param secondNodeIndex Index of the second node interested in the swap
      * @return New cost after the swap
      */
@@ -88,9 +86,9 @@ public class Best {
     }
 
     /**
-     * @param firstRoute First route interested in relocating
-     * @param secondRoute Second route interested in relocating
-     * @param firstNodeIndex Index of the node subject to relocating
+     * @param firstRoute      First route interested in relocating
+     * @param secondRoute     Second route interested in relocating
+     * @param firstNodeIndex  Index of the node subject to relocating
      * @param secondNodeIndex Index of the node where the node a has to be relocated
      * @return New cost after the swap
      */

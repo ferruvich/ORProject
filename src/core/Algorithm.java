@@ -1,12 +1,12 @@
 package core;
 
 import utils.NodeRoute;
+import utils.Pair;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
 
-public class Algorithm implements Callable<RouteList> {
+public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
     public static final int ALGORITHM_ONE = 0;
     public static final int ALGORITHM_TWO = 1;
     private TSPInstance in;
@@ -21,48 +21,50 @@ public class Algorithm implements Callable<RouteList> {
 
 
     @Override
-    public RouteList call() {
-        System.out.println("Executing " + name);
+    public Pair<RouteList, RouteList> call() {
+        //System.out.println("Executing " + name);
         RouteList routeList = new RouteList();
+        RouteList original = new RouteList();
 
         try {
-            routeList.initialize(in);
-            ArrayList<Route> routes = routeList.getRoutes();
+            Best best;
 
-            Best best = new Best(routeList);
+            routeList.initialize(in);
+            original = routeList;
+
+            ArrayList<Route> routes = routeList.getRoutes();
             if (type == Algorithm.ALGORITHM_ONE) {
                 for (int i = 0; i < routes.size(); i++) {
-                    NodeRoute result = best.run(routes.get(i), Best.BEST_RELOCATE);
-                    //TODO: Apply Relocate
-                    NodeRoute result2 = best.run(routes.get(i), Best.BEST_EXCHANGE);
-                    //TODO: Apply Exchange
+                    Route currentRoute = routes.get(i);
+
+                    best = new Best(routeList, new BestExchange());
+                    NodeRoute candidateBestExchange = best.estimateStrategy(currentRoute);
+                    if (candidateBestExchange != null)
+                        routeList = best.applyStrategy(candidateBestExchange);
+
+                    best = new Best(routeList, new BestRelocate());
+                    NodeRoute candidateBestRelocate = best.estimateStrategy(currentRoute);
+                    if (candidateBestRelocate != null)
+                        routeList = best.applyStrategy(candidateBestRelocate);
                 }
             } else {
                 for (int i = 0; i < routes.size(); i++) {
-                    NodeRoute result = best.run(routes.get(i), Best.BEST_EXCHANGE);
-                    //TODO: Apply Exchange
-                    NodeRoute result2 = best.run(routes.get(i), Best.BEST_RELOCATE);
-                    //TODO: Apply Relocate
+                    Route currentRoute = routes.get(i);
+
+                    best = new Best(routeList, new BestRelocate());
+                    NodeRoute candidateBestRelocate = best.estimateStrategy(currentRoute);
+                    if (candidateBestRelocate != null)
+                        routeList = best.applyStrategy(candidateBestRelocate);
+
+                    best = new Best(routeList, new BestExchange());
+                    NodeRoute candidateBestExchange = best.estimateStrategy(currentRoute);
+                    if (candidateBestExchange != null)
+                        routeList = best.applyStrategy(candidateBestExchange);
                 }
             }
         } catch (Exception ex) {
-            System.out.println("[" + name + "]" + " Exception Message" + ex.getMessage());
+            System.out.println("[" + name + "]" + " Exception Message: " + ex.getMessage());
         }
-
-        return routeList;
-    }
-
-    private void print(List<Route> routes) {
-        int i = 0;
-
-        System.out.println();
-        for (Route route : routes) {
-            System.out.print("Numero percorso: " + (i++) + ": ");
-            for (Node n : route.getNodes()) {
-                System.out.print(n.getIndex() + " ");
-            }
-            System.out.print("\n");
-        }
-
+        return new Pair<RouteList, RouteList>(original, routeList);
     }
 }

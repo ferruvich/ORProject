@@ -1,32 +1,38 @@
 package utils;
 
+import core.Route;
+
 public class NodeRoute {
-    private int indexFirst;
-    private int indexSecond;
+    private Route firstRoute;
+    private Route secondRoute;
+    private int firstNodeIndex;
+    private int secondNodeIndex;
     private double gain;
 
 
-    public NodeRoute(int indexFirst, int indexSecond, double gain) {
-        this.indexFirst = indexFirst;
-        this.indexSecond = indexSecond;
+    public NodeRoute(Route firstRoute, Route secondRoute, int indexFirst, int indexSecond, double gain) {
+        this.firstRoute = firstRoute;
+        this.secondRoute = secondRoute;
+        this.firstNodeIndex = indexFirst;
+        this.secondNodeIndex = indexSecond;
         this.gain = gain;
     }
 
 
-    public int getIndexFirst() {
-        return indexFirst;
+    public int getFirstNodeIndex() {
+        return firstNodeIndex;
     }
 
-    public void setIndexFirst(int indexFirst) {
-        this.indexFirst = indexFirst;
+    public void setFirstNodeIndex(int firstNodeIndex) {
+        this.firstNodeIndex = firstNodeIndex;
     }
 
-    public int getIndexSecond() {
-        return indexSecond;
+    public int getSecondNodeIndex() {
+        return secondNodeIndex;
     }
 
-    public void setIndexSecond(int indexSecond) {
-        this.indexSecond = indexSecond;
+    public void setSecondNodeIndex(int secondNodeIndex) {
+        this.secondNodeIndex = secondNodeIndex;
     }
 
     public double getGain() {
@@ -35,5 +41,21 @@ public class NodeRoute {
 
     public void setGain(double gain) {
         this.gain = gain;
+    }
+
+    public Route getFirstRoute() {
+        return firstRoute;
+    }
+
+    public void setFirstRoute(Route firstRoute) {
+        this.firstRoute = firstRoute;
+    }
+
+    public Route getSecondRoute() {
+        return secondRoute;
+    }
+
+    public void setSecondRoute(Route secondRoute) {
+        this.secondRoute = secondRoute;
     }
 }

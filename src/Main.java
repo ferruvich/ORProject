@@ -1,6 +1,7 @@
 import core.*;
 import utils.DistanceMatrix;
 import utils.JsonReader;
+import utils.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +19,18 @@ public class Main {
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
-        List<FutureTask<RouteList>> algorithmOneFutures = new ArrayList<FutureTask<RouteList>>();
+        List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
         for (int i = 0; i < Main.NUMBER_OF_ITERATION; i++) {
             Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration " + (i + 1));
-            FutureTask<RouteList> futureTask = new FutureTask<RouteList>(algorithmOne);
+            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
             algorithmOneFutures.add(futureTask);
             executor.execute(futureTask);
         }
 
-        List<FutureTask<RouteList>> algorithmTwoFutures = new ArrayList<FutureTask<RouteList>>();
+        List<FutureTask<Pair<RouteList, RouteList>>> algorithmTwoFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
         for (int j = 0; j < Main.NUMBER_OF_ITERATION; j++) {
             Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 1));
-            FutureTask<RouteList> futureTask = new FutureTask<RouteList>(algorithmTwo);
+            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmTwo);
             algorithmTwoFutures.add(futureTask);
             executor.execute(futureTask);
         }
@@ -40,40 +41,46 @@ public class Main {
         executor.shutdown();
     }
 
-    private static void getBestRouteList(String name, List<FutureTask<RouteList>> algorithmFutures) {
-        List<RouteList> routeLists = new ArrayList<RouteList>();
-        for (FutureTask<RouteList> task : algorithmFutures) {
+    private static void getBestRouteList(String name, List<FutureTask<Pair<RouteList, RouteList>>> algorithmFutures) {
+        List<Pair<RouteList, RouteList>> pairs = new ArrayList<Pair<RouteList, RouteList>>();
+        for (FutureTask<Pair<RouteList, RouteList>> task : algorithmFutures) {
             try {
-                routeLists.add(task.get());
+                pairs.add(task.get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+        }
+        Pair<RouteList, RouteList> bestPair = new Pair<RouteList, RouteList>(new RouteList(), new RouteList());
+        for (Pair<RouteList, RouteList> routeList : pairs) {
+
+            if (routeList.getR().getTotalCost() < bestPair.getR().getTotalCost())
+                bestPair = routeList;
 
         }
-        RouteList bestRouteList = new RouteList();
-        for (RouteList routeList : routeLists) {
-
-            if (routeList.getTotalCost() < bestRouteList.getTotalCost())
-                bestRouteList = routeList;
-
-        }
-        System.out.print("\n" + name);
-        print(bestRouteList);
+        System.out.println(name);
+        printPair(bestPair);
     }
 
-    private static void print(RouteList routeList) {
+    private static void printPair(Pair<RouteList, RouteList> routeList) {
+        System.out.println("Original Route List");
+        printRouteList(routeList.getL());
+        System.out.println("Better Route List");
+        printRouteList(routeList.getR());
+    }
+
+    private static void printRouteList(RouteList routeList) {
         int i = 0;
 
-        System.out.println();
+        //System.out.println();
         for (Route route : routeList.getRoutes()) {
             System.out.print("Numero percorso: " + (i++) + ": ");
             for (Node n : route.getNodes()) {
                 System.out.print(n.getIndex() + " ");
             }
-            System.out.print("\n");
+            System.out.println();
         }
-
+        System.out.println();
     }
 }
