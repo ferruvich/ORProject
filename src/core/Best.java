@@ -10,7 +10,7 @@ public class Best {
 
 
     public Best(RouteList routeList, Strategy strategy) {
-        this.routeList = routeList;
+        this.routeList = new RouteList(routeList);
         this.strategy = strategy;
     }
 

@@ -23,14 +23,14 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
     @Override
     public Pair<RouteList, RouteList> call() {
         //System.out.println("Executing " + name);
-        RouteList routeList = new RouteList();
         RouteList original = new RouteList();
+        RouteList routeList = new RouteList();
 
         try {
             Best best;
 
             routeList.initialize(in);
-            original = routeList;
+            original = new RouteList(routeList);
 
             ArrayList<Route> routes = routeList.getRoutes();
             if (type == Algorithm.ALGORITHM_ONE) {

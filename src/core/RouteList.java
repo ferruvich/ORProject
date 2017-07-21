@@ -13,6 +13,11 @@ public class RouteList {
         this.routes = new ArrayList<>();
     }
 
+    public RouteList(RouteList routeList) {
+        this.routes = routeList.getRoutes();
+        this.totalCost = routeList.getTotalCost();
+    }
+
     public void initialize(TSPInstance instance) {
         List<Integer> linehaul = instance.getLineHaulTsp();
         List<Integer> backhaul = instance.getBackHaulTsp();
