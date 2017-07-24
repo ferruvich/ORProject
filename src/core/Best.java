@@ -10,7 +10,7 @@ public class Best {
 
 
     public Best(RouteList routeList, Strategy strategy) {
-        this.routeList = new RouteList(routeList);
+        this.routeList = routeList;
         this.strategy = strategy;
     }
 
@@ -22,7 +22,7 @@ public class Best {
      * the index of the node subject to the swap or the relocate with the key and the cost updated
      */
     public NodeRoute estimateStrategy(Route route) {
-        NodeRoute nodeRoute = null;
+        NodeRoute candidate = null;
         ArrayList<Node> nodes = route.getNodes();
 
         for (int i = 1; i < nodes.size() - 1; i++) {
@@ -34,15 +34,15 @@ public class Best {
 
                     if (b.getType().equals(a.getType()) && (!a.equals(b))) {
                         double previousCost = routeList.updateTotalCost();
-                        double newCost = strategy.estimate(routeList, route, r, i, j);
+                        double newCost = strategy.estimate(routeList, route.hashCode(), r.hashCode(), i, j);
                         if (newCost < previousCost) {
                             double gain = previousCost - newCost;
 
-                            if (nodeRoute == null) {
-                                nodeRoute = new NodeRoute(route, r, i, j, gain);
+                            if (candidate == null) {
+                                candidate = new NodeRoute(route, r, i, j, gain);
                             } else {
-                                if (gain < nodeRoute.getGain()) {
-                                    nodeRoute = new NodeRoute(route, r, i, j, gain);
+                                if (gain > candidate.getGain()) {
+                                    candidate = new NodeRoute(route, r, i, j, gain);
                                 }
                             }
                         }
@@ -51,11 +51,11 @@ public class Best {
             }
         }
 
-        return nodeRoute;
+        return candidate;
     }
 
-    public RouteList applyStrategy(NodeRoute nodeRoute) {
-        return strategy.apply(routeList, nodeRoute.getFirstRoute(), nodeRoute.getSecondRoute(), nodeRoute.getFirstNodeIndex(), nodeRoute.getSecondNodeIndex());
+    public void applyStrategy(NodeRoute nodeRoute) {
+        strategy.apply(routeList, nodeRoute.getFirstRoute(), nodeRoute.getSecondRoute(), nodeRoute.getFirstNodeIndex(), nodeRoute.getSecondNodeIndex());
     }
 
     /**

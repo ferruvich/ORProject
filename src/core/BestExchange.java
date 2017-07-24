@@ -3,42 +3,24 @@ package core;
 public class BestExchange implements Strategy {
 
     @Override
-    public double estimate(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
-        double gain;
-        RouteList current = routeList;
-
-        current.updateEachRouteCost();
+    public double estimate(RouteList routeList, int firstRouteHash, int secondRouteHash, int firstNodeIndex, int secondNodeIndex) {
+        RouteList current = new RouteList(routeList);
+        Route firstRoute = current.getRouteByHash(firstRouteHash);
+        Route secondRoute = current.getRouteByHash(secondRouteHash);
 
         Node firstNode = firstRoute.getNodeByIndex(firstNodeIndex);
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
         firstRoute.getNodes().set(firstNodeIndex, secondNode);
         secondRoute.getNodes().set(secondNodeIndex, firstNode);
-
-        gain = current.updateTotalCost();
-
-        firstRoute.getNodes().set(firstNodeIndex, firstNode);
-        secondRoute.getNodes().set(secondNodeIndex, secondNode);
-
-        current.updateEachRouteCost();
-
-
-        return gain;
+        return current.updateTotalCost();
     }
 
     @Override
-    public RouteList apply(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
-        RouteList current = routeList;
-
-        current.updateEachRouteCost();
-
+    public void apply(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
         Node firstNode = firstRoute.getNodeByIndex(firstNodeIndex);
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
         firstRoute.getNodes().set(firstNodeIndex, secondNode);
         secondRoute.getNodes().set(secondNodeIndex, firstNode);
-
-        current.updateTotalCost();
-
-
-        return current;
+        routeList.updateTotalCost();
     }
 }

@@ -130,4 +130,16 @@ public class RouteList {
             route.updateCost();
         }
     }
+
+    public Route getRouteByHash(int hash) {
+        Route result = null;
+
+        for (Route route : routes) {
+            if (route.hashCode() == hash) {
+                result = route;
+            }
+        }
+
+        return result;
+    }
 }

@@ -3,9 +3,10 @@ package core;
 public class BestRelocate implements Strategy {
 
     @Override
-    public double estimate(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
-        double gain;
-        RouteList current = routeList;
+    public double estimate(RouteList routeList, int firstRouteHash, int secondRouteHash, int firstNodeIndex, int secondNodeIndex) {
+        RouteList current = new RouteList(routeList);
+        Route firstRoute = current.getRouteByHash(firstRouteHash);
+        Route secondRoute = current.getRouteByHash(secondRouteHash);
 
         current.updateEachRouteCost();
 
@@ -13,19 +14,12 @@ public class BestRelocate implements Strategy {
         firstRoute.getNodes().remove(firstNodeIndex);
         secondRoute.getNodes().add(secondNodeIndex, a);
 
-        gain = current.updateTotalCost();
+        return current.updateTotalCost();
 
-        secondRoute.getNodes().remove(secondNodeIndex);
-        firstRoute.getNodes().add(firstNodeIndex, a);
-
-        current.updateEachRouteCost();
-
-
-        return gain;
     }
 
     @Override
-    public RouteList apply(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
+    public void apply(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
         RouteList current = routeList;
 
         current.updateEachRouteCost();
@@ -35,8 +29,5 @@ public class BestRelocate implements Strategy {
         secondRoute.getNodes().add(secondNodeIndex, a);
 
         current.updateTotalCost();
-
-
-        return current;
     }
 }

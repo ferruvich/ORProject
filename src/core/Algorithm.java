@@ -22,7 +22,6 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
 
     @Override
     public Pair<RouteList, RouteList> call() {
-        //System.out.println("Executing " + name);
         RouteList original = new RouteList();
         RouteList routeList = new RouteList();
 
@@ -40,12 +39,12 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
                     best = new Best(routeList, new BestExchange());
                     NodeRoute candidateBestExchange = best.estimateStrategy(currentRoute);
                     if (candidateBestExchange != null)
-                        routeList = best.applyStrategy(candidateBestExchange);
+                        best.applyStrategy(candidateBestExchange);
 
                     best = new Best(routeList, new BestRelocate());
                     NodeRoute candidateBestRelocate = best.estimateStrategy(currentRoute);
                     if (candidateBestRelocate != null)
-                        routeList = best.applyStrategy(candidateBestRelocate);
+                        best.applyStrategy(candidateBestRelocate);
                 }
             } else {
                 for (int i = 0; i < routes.size(); i++) {
@@ -54,12 +53,12 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
                     best = new Best(routeList, new BestRelocate());
                     NodeRoute candidateBestRelocate = best.estimateStrategy(currentRoute);
                     if (candidateBestRelocate != null)
-                        routeList = best.applyStrategy(candidateBestRelocate);
+                        best.applyStrategy(candidateBestRelocate);
 
                     best = new Best(routeList, new BestExchange());
                     NodeRoute candidateBestExchange = best.estimateStrategy(currentRoute);
                     if (candidateBestExchange != null)
-                        routeList = best.applyStrategy(candidateBestExchange);
+                        best.applyStrategy(candidateBestExchange);
                 }
             }
         } catch (Exception ex) {
