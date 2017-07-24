@@ -20,6 +20,9 @@ public class Best {
      *
      * @return swapMap A map with the Node as key and a List of NodeRoute as value. The NodeRoute has as attributes
      * the index of the node subject to the swap or the relocate with the key and the cost updated
+     *
+     * TODO verificare come avvengono gli scambi di verifica e se c'è qualche bug correlato
+     * Avvengono degli scambi che non dovrebbero avvenire e il nodeRoute scelto non è quello con il guadagno maggiore
      */
     public NodeRoute estimateStrategy(Route route) {
         NodeRoute candidate = null;
@@ -45,6 +48,7 @@ public class Best {
                                     candidate = new NodeRoute(route, r, i, j, gain);
                                 }
                             }
+                            System.out.println("previous: " + previousCost + ", gain: " + gain);
                         }
                     }
                 }
