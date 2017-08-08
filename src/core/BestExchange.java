@@ -19,7 +19,6 @@ public class BestExchange implements Strategy {
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
         firstRoute.getNodes().set(firstNodeIndex, secondNode);
         secondRoute.getNodes().set(secondNodeIndex, firstNode);
-
         totalCost = current.updateTotalCost();
 
         firstRoute.getNodes().set(firstNodeIndex, firstNode);

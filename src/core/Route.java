@@ -1,6 +1,7 @@
 package core;
 
 import exceptions.NodeNotDeletableException;
+import exceptions.NodeNotSupportedException;
 import utils.DistanceMatrix;
 
 import java.util.ArrayList;
@@ -22,14 +23,6 @@ public class Route {
         }
         this.nodes.add(n);
     }
-
-//    public void closeRoute() {
-//        Node warehouse = nodes.get(0);
-//        Node last = nodes.get(nodes.size() - 1);
-//        this.nodes.add(nodes.size(), warehouse);
-//        updateCost(warehouse, last);
-//        closed = true;
-//    }
 
     public void deleteNode(int index) throws NodeNotDeletableException{
         if(this.nodes.size() == 0){
