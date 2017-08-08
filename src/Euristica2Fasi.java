@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-public class Main {
+public class Euristica2Fasi {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class Main {
 
 
         List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
-//        for (int i = 0; i < Main.NUMBER_OF_ITERATION; i++) {
+//        for (int i = 0; i < Euristica2Fasi.NUMBER_OF_ITERATION; i++) {
 
         RouteList routeList = new RouteList();
         routeList.initialize(in);
@@ -39,7 +39,7 @@ public class Main {
 //        }
 
 //        List<FutureTask<Pair<RouteList, RouteList>>> algorithmTwoFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
-//        for (int j = 0; j < Main.NUMBER_OF_ITERATION; j++) {
+//        for (int j = 0; j < Euristica2Fasi.NUMBER_OF_ITERATION; j++) {
 //            Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 1));
 //            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmTwo);
 //            algorithmTwoFutures.add(futureTask);
