@@ -2,6 +2,7 @@ package core;
 
 import utils.NodeRoute;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Best {
@@ -28,6 +29,7 @@ public class Best {
         NodeRoute candidate = null;
         ArrayList<Node> nodes = route.getNodes();
 
+
         for (int i = 1; i < nodes.size() - 1; i++) {
             Node a = nodes.get(i);
 
@@ -38,9 +40,9 @@ public class Best {
                     if (b.getType().equals(a.getType()) && (!a.equals(b))) {
                         double previousCost = routeList.updateTotalCost();
                         double newCost = strategy.estimate(routeList, route.hashCode(), r.hashCode(), i, j);
-                        if (newCost < previousCost) {
-                            double gain = previousCost - newCost;
+                        double gain = previousCost - newCost;
 
+                        if (gain > 0) {
                             if (candidate == null) {
                                 candidate = new NodeRoute(route, r, i, j, gain);
                             } else {
@@ -48,7 +50,6 @@ public class Best {
                                     candidate = new NodeRoute(route, r, i, j, gain);
                                 }
                             }
-                            System.out.println("previous: " + previousCost + ", gain: " + gain);
                         }
                     }
                 }
@@ -115,7 +116,7 @@ public class Best {
         return gain;
     }
 
-    public void printRoute(Route route) {
+    public static void printRoute(Route route) {
         System.out.print("Route: ");
         for (Node node : route.getNodes()) {
             System.out.print(node.getIndex() + " ");

@@ -14,29 +14,39 @@ public class Main {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
-        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/N1.json");
+        // crea le rotte iniziali
+        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/A1.json");
         DistanceMatrix.getInstance().initialize(in);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
+
+
         List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
-        for (int i = 0; i < Main.NUMBER_OF_ITERATION; i++) {
-            Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration " + (i + 1));
+//        for (int i = 0; i < Main.NUMBER_OF_ITERATION; i++) {
+
+        RouteList routeList = new RouteList();
+        routeList.initialize(in);
+
+        printRouteList(routeList);
+
+
+            Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
             FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
             algorithmOneFutures.add(futureTask);
             executor.execute(futureTask);
-        }
+//        }
 
-        List<FutureTask<Pair<RouteList, RouteList>>> algorithmTwoFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
-        for (int j = 0; j < Main.NUMBER_OF_ITERATION; j++) {
-            Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 1));
-            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmTwo);
-            algorithmTwoFutures.add(futureTask);
-            executor.execute(futureTask);
-        }
+//        List<FutureTask<Pair<RouteList, RouteList>>> algorithmTwoFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
+//        for (int j = 0; j < Main.NUMBER_OF_ITERATION; j++) {
+//            Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 1));
+//            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmTwo);
+//            algorithmTwoFutures.add(futureTask);
+//            executor.execute(futureTask);
+//        }
 
         getBestRouteList("Algorithm One", algorithmOneFutures);
-        getBestRouteList("Algorithm Two", algorithmTwoFutures);
+//        getBestRouteList("Algorithm Two", algorithmTwoFutures);
 
         executor.shutdown();
     }
