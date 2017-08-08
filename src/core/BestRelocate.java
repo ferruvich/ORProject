@@ -1,7 +1,7 @@
 package core;
 
 /**
- * TODO verificare che non vengano fatti scambi se uno dei route resta senza elementi, lanciare eventualmente eccezione e catturare il caso
+ * TODO verificare l'aggiunta di nodi, essa non deve far superare il carico massimo del camion (in A1 è 1500)
  */
 
 public class BestRelocate implements Strategy {
@@ -19,12 +19,12 @@ public class BestRelocate implements Strategy {
         Node a = firstRoute.getNodeByIndex(firstNodeIndex);
         Node b = secondRoute.getNodeByIndex(secondNodeIndex);
 
-        firstRoute.getNodes().remove(firstNodeIndex);
+        firstRoute.deleteNode(firstNodeIndex);
         secondRoute.getNodes().add(secondNodeIndex, a);
 
         totalCost = current.updateTotalCost();
 
-        secondRoute.getNodes().remove(secondNodeIndex);
+        secondRoute.deleteNode(secondNodeIndex);
         firstRoute.getNodes().add(firstNodeIndex, a);
 
 

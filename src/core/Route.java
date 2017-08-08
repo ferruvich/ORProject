@@ -1,5 +1,6 @@
 package core;
 
+import exceptions.NodeNotDeletableException;
 import utils.DistanceMatrix;
 
 import java.util.ArrayList;
@@ -22,12 +23,26 @@ public class Route {
         this.nodes.add(n);
     }
 
-    public void closeRoute() {
-        Node warehouse = nodes.get(0);
-        Node last = nodes.get(nodes.size() - 1);
-        this.nodes.add(nodes.size(), warehouse);
-        updateCost(warehouse, last);
-        closed = true;
+//    public void closeRoute() {
+//        Node warehouse = nodes.get(0);
+//        Node last = nodes.get(nodes.size() - 1);
+//        this.nodes.add(nodes.size(), warehouse);
+//        updateCost(warehouse, last);
+//        closed = true;
+//    }
+
+    public void deleteNode(int index) throws NodeNotDeletableException{
+        if(this.nodes.size() == 0){
+            throw new NodeNotDeletableException("Route vuota");
+        }
+        else if(this.nodes.get(index) == null){
+            throw  new NodeNotDeletableException("Non esiste il nodo richiesto");
+        }
+        else if(this.nodes.size() == 3 && this.nodes.get(0).getType().equals("Warehouse") && this.nodes.get(2).getType().equals("Warehouse")){
+            throw new NodeNotDeletableException("Nodo non eliminabile, si svuoterebbe la route");
+        }else{
+            this.nodes.remove(index);
+        }
     }
 
     private void updateCost(Node previous, Node n) {

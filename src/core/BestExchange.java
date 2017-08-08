@@ -1,6 +1,8 @@
 package core;
 
-import java.io.IOException;
+/**
+ * TODO verificare l'aggiunta di nodi, essa non deve far superare il carico massimo del camion (in A1 è 1500)
+ */
 
 public class BestExchange implements Strategy {
 

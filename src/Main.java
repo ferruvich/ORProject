@@ -21,20 +21,21 @@ public class Main {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
 
-
         List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
 //        for (int i = 0; i < Main.NUMBER_OF_ITERATION; i++) {
 
         RouteList routeList = new RouteList();
         routeList.initialize(in);
-
+        System.out.println("Rotte iniziali");
         printRouteList(routeList);
+        routeList.updateTotalCost();
+        System.out.println("TotalCost: " + routeList.getTotalCost());
 
 
-            Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
-            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
-            algorithmOneFutures.add(futureTask);
-            executor.execute(futureTask);
+        Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
+        FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
+        algorithmOneFutures.add(futureTask);
+        executor.execute(futureTask);
 //        }
 
 //        List<FutureTask<Pair<RouteList, RouteList>>> algorithmTwoFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
@@ -74,10 +75,12 @@ public class Main {
     }
 
     private static void printPair(Pair<RouteList, RouteList> routeList) {
-        System.out.println("Original Route List");
-        printRouteList(routeList.getL());
+        //System.out.println("Original Route List");
+        //printRouteList(routeList.getL());
         System.out.println("Better Route List");
         printRouteList(routeList.getR());
+        routeList.getR().updateTotalCost();
+        System.out.println("TotalCost: " + routeList.getR().getTotalCost());
     }
 
     private static void printRouteList(RouteList routeList) {
@@ -91,6 +94,6 @@ public class Main {
             }
             System.out.println();
         }
-        System.out.println();
+        //System.out.println();
     }
 }

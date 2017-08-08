@@ -43,56 +43,32 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
                 System.out.println("Best exchange start");
                 int i = 0;
                 while (true) {
-                    System.out.println("RouteList cost before: " + routeList.getTotalCost());
                     for (Route currentRoute : routes) {
                         best = new Best(routeList, new BestExchange());
                         NodeRoute candidateBestExchange = best.estimateStrategy(currentRoute);
-//                        System.out.println("\tCandidate: " + candidateBestExchange.getGain());
                         if (candidateBestExchange != null) {
                             nodeToApply.add(candidateBestExchange);
                         }
-//                        System.out.println("\t\tRouteList cost after candidate: " + routeList.getTotalCost());
                     }
                     routeList.updateTotalCost();
-//                    System.out.println("RouteList cost before: " + routeList.getTotalCost());
                     if(!nodeToApply.isEmpty()) {
                         NodeRoute n = bestNodeRoute(nodeToApply);
-                        System.out.println("\tBestCandidate: " + n.getGain());
                         best.applyStrategy(n);
                     } else {
                         break;
                     }
                     nodeToApply.clear();
-                    System.out.println("\t\tRouteList cost after: " + routeList.getTotalCost());
                 }
 
-                for(Route r : routeList.getRoutes()){
-                    Best.printRoute(r);
-                }
+//                for(Route r : routeList.getRoutes()){
+//                    Best.printRoute(r);
+//                }
 
                 System.out.println("Best relocate start");
                 while (true) {
-                    System.out.println("RouteList cost before: " + routeList.getTotalCost());
                     for (Route currentRoute : routes) {
                         best = new Best(routeList, new BestRelocate());
-
-//                        System.out.println("\nPercorsi pre-estimate: ");
-//
-//                        for(Route r : routeList.getRoutes()){
-//                            Best.printRoute(r);
-//                        }
-
                         NodeRoute candidateBestRelocate = best.estimateStrategy(currentRoute);
-//                        System.out.println("\tCandidate: " + candidateBestRelocate.getGain());
-
-//                        System.out.println("\nPercorsi post-estimate: ");
-//
-//                        for(Route r : routeList.getRoutes()){
-//                            Best.printRoute(r);
-//                        }
-//
-//                        System.in.read();
-
                         if (candidateBestRelocate != null) {
                             nodeToApply.add(candidateBestRelocate);
                         }
@@ -103,7 +79,6 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
                         break;
                     }
                     nodeToApply.clear();
-                    System.out.println("\t\tRouteList cost after: " + routeList.getTotalCost());
                 }
 
             } else {
