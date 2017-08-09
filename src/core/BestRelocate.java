@@ -31,7 +31,6 @@ public class BestRelocate implements Strategy {
             throw e;
         }
 
-
         totalCost = current.updateTotalCost();
 
         secondRoute.deleteNode(secondNodeIndex);

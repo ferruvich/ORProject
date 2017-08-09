@@ -94,7 +94,7 @@ public class RouteList {
             }
             lastNodesSorted.putAll(lastNodes);
             for (Node toCheck : lastNodesSorted.keySet()) {
-                if (routes.get(lastNodes.get(toCheck)).getTotLinehaul() + n.getCapacity() <= instance.getMaxCapacity()) {
+                if (routes.get(lastNodes.get(toCheck)).getTotLinehaul() + n.getCapacity() <= instance.getMaxCapacity() || n.getType().equals("Backhaul")) {
                     routes.get(lastNodes.get(toCheck)).addToRoute(n);
                     break;
                 }

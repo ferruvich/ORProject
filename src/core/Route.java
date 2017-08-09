@@ -25,18 +25,34 @@ public class Route {
     }
 
     public void addNode(int index, Node n) throws NodeNotSupportedException{
-        if(totLinehaul + n.getCapacity() > TSPInstance.getInstance().getMaxCapacity()){
+        if((n.getType() == "Linehaul") && ((totLinehaul + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity())){
             throw new NodeNotSupportedException("Il nodo non è aggiungibile");
         }else {
             this.nodes.add(index, n);
+            if(n.getType().equals("Linehaul")){
+                totLinehaul += n.getCapacity();
+            }else if(n.getType().equals("Backhaul")){
+                totBackhaul += n.getCapacity();
+            }
         }
     }
 
     public void setNode(int index, Node n) throws NodeNotSupportedException{
-        if((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity() > TSPInstance.getInstance().getMaxCapacity()){
+        if((n.getType() == "Linehaul") && ((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity()){
             throw new NodeNotSupportedException("Il nodo non è aggiungibile");
         }else{
+            Node nn = this.nodes.get(index);
+            if(nn.getType().equals("Linehaul")){
+                totLinehaul -= nn.getCapacity();
+            }else if(nn.getType().equals("Backhaul")){
+                totBackhaul -= nn.getCapacity();
+            }
             this.nodes.set(index, n);
+            if(n.getType().equals("Linehaul")){
+                totLinehaul += n.getCapacity();
+            }else if(n.getType().equals("Backhaul")){
+                totBackhaul += n.getCapacity();
+            }
         }
     }
 
@@ -50,7 +66,13 @@ public class Route {
         else if(this.nodes.size() == 3 && this.nodes.get(0).getType().equals("Warehouse") && this.nodes.get(2).getType().equals("Warehouse")){
             throw new NodeNotDeletableException("Nodo non eliminabile, si svuoterebbe la route");
         }else{
+            Node n = this.nodes.get(index);
             this.nodes.remove(index);
+            if(n.getType().equals("Linehaul")){
+                totLinehaul -= n.getCapacity();
+            }else if(n.getType().equals("Backhaul")){
+                totBackhaul -= n.getCapacity();
+            }
         }
     }
 

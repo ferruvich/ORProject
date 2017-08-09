@@ -41,11 +41,27 @@ public class Best {
                     if (b.getType().equals(a.getType()) && (!a.equals(b))) {
                         double previousCost = routeList.updateTotalCost();
                         double newCost = previousCost;
+
+//                        if(strategy instanceof BestRelocate){
+//                            System.out.println("1: ");
+//                            for(Route rr : routeList.getRoutes()){
+//                                Best.printRoute(rr);
+//                            }
+//                        }
+
                         try {
                             newCost = strategy.estimate(routeList, route.hashCode(), r.hashCode(), i, j);
                         }catch(NodeNotDeletableException | NodeNotSupportedException e){
-                            return null;
+                            //System.out.println(e.getMessage());
                         }
+
+//                        if(strategy instanceof BestRelocate){
+//                            System.out.println("2: ");
+//                            for(Route rr : routeList.getRoutes()){
+//                                Best.printRoute(rr);
+//                            }
+//                        }
+
                         double gain = previousCost - newCost;
 
                         if (gain > 0) {
@@ -127,7 +143,7 @@ public class Best {
         for (Node node : route.getNodes()) {
             System.out.print(node.getIndex() + " ");
         }
-        System.out.println();
+        System.out.println(" totLinehaul -> " + route.getTotLinehaul());
     }
 
 

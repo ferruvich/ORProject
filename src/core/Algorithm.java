@@ -35,7 +35,12 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
             Best best = null;
 
             routeList.initialize(in);
+            System.out.println("Rotte iniziali");
+            for(Route r: routeList.getRoutes()){
+                Best.printRoute(r);
+            }
             routeList.updateTotalCost();
+            System.out.println("TotalCost: " + routeList.getTotalCost());
             original = new RouteList(routeList);
 
             ArrayList<Route> routes = routeList.getRoutes();

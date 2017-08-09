@@ -24,14 +24,6 @@ public class Euristica2Fasi {
         List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
 //        for (int i = 0; i < Euristica2Fasi.NUMBER_OF_ITERATION; i++) {
 
-        RouteList routeList = new RouteList();
-        routeList.initialize(in);
-        System.out.println("Rotte iniziali");
-        printRouteList(routeList);
-        routeList.updateTotalCost();
-        System.out.println("TotalCost: " + routeList.getTotalCost());
-
-
         Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
         FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
         algorithmOneFutures.add(futureTask);
@@ -78,7 +70,9 @@ public class Euristica2Fasi {
         //System.out.println("Original Route List");
         //printRouteList(routeList.getL());
         System.out.println("Better Route List");
-        printRouteList(routeList.getR());
+        for(Route r: routeList.getR().getRoutes()){
+            Best.printRoute(r);
+        }
         routeList.getR().updateTotalCost();
         System.out.println("TotalCost: " + routeList.getR().getTotalCost());
     }
