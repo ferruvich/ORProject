@@ -60,9 +60,10 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
                     nodeToApply.clear();
                 }
 
-//                for(Route r : routeList.getRoutes()){
-//                    Best.printRoute(r);
-//                }
+                for(Route r : routeList.getRoutes()){
+                    Best.printRoute(r);
+                }
+                System.out.println("Total cost -> " + routeList.getTotalCost());
 
                 System.out.println("Best relocate start");
                 while (true) {

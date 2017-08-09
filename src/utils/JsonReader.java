@@ -25,7 +25,7 @@ public class JsonReader {
     }
 
     public TSPInstance getSpecifications(String fileName){
-        TSPInstance tspInstance = new TSPInstance();
+        TSPInstance tspInstance = TSPInstance.getInstance();
         try {
             Reader fileReader = new FileReader(new File(fileName));
             tspInstance = gson.fromJson(fileReader, TSPInstance.class);

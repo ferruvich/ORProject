@@ -1,6 +1,7 @@
 package core;
 
 import exceptions.NodeNotDeletableException;
+import exceptions.NodeNotSupportedException;
 import utils.NodeRoute;
 
 import java.io.IOException;
@@ -42,8 +43,8 @@ public class Best {
                         double newCost = previousCost;
                         try {
                             newCost = strategy.estimate(routeList, route.hashCode(), r.hashCode(), i, j);
-                        }catch(NodeNotDeletableException e){
-                            //System.out.println(e.getMessage());
+                        }catch(NodeNotDeletableException | NodeNotSupportedException e){
+                            return null;
                         }
                         double gain = previousCost - newCost;
 

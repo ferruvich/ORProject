@@ -24,6 +24,22 @@ public class Route {
         this.nodes.add(n);
     }
 
+    public void addNode(int index, Node n) throws NodeNotSupportedException{
+        if(totLinehaul + n.getCapacity() > TSPInstance.getInstance().getMaxCapacity()){
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile");
+        }else {
+            this.nodes.add(index, n);
+        }
+    }
+
+    public void setNode(int index, Node n) throws NodeNotSupportedException{
+        if((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity() > TSPInstance.getInstance().getMaxCapacity()){
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile");
+        }else{
+            this.nodes.set(index, n);
+        }
+    }
+
     public void deleteNode(int index) throws NodeNotDeletableException{
         if(this.nodes.size() == 0){
             throw new NodeNotDeletableException("Route vuota");

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class TSPInstance {
 
+    private static TSPInstance instance = null;
+
     private int totNodes;
     private int totRoutes;
     private int maxCapacity;
@@ -12,7 +14,7 @@ public class TSPInstance {
     private ArrayList<Integer> backHaulTsp;
     private ArrayList<Node> nodes;
 
-    public TSPInstance() {
+    private TSPInstance() {
         this.totNodes = 0;
         this.totRoutes = 0;
         this.maxCapacity = 0;
@@ -22,14 +24,11 @@ public class TSPInstance {
         this.nodes = new ArrayList<>();
     }
 
-    public TSPInstance(int totNodes, int totRoutes, int maxCapacity) {
-        this.totNodes = totNodes;
-        this.totRoutes = totRoutes;
-        this.maxCapacity = maxCapacity;
-        this.completeTsp = new ArrayList<>();
-        this.lineHaulTsp = new ArrayList<>();
-        this.backHaulTsp = new ArrayList<>();
-        this.nodes = new ArrayList<>();
+    public static TSPInstance getInstance(){
+        if(instance == null) {
+            return new TSPInstance();
+        }
+        return instance;
     }
 
     public int getTotNodes() {

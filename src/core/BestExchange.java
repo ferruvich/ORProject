@@ -1,5 +1,7 @@
 package core;
 
+import exceptions.NodeNotSupportedException;
+
 /**
  * TODO verificare l'aggiunta di nodi, essa non deve far superare il carico massimo del camion (in A1 è 1500)
  */
@@ -17,12 +19,20 @@ public class BestExchange implements Strategy {
 
         Node firstNode = firstRoute.getNodeByIndex(firstNodeIndex);
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
-        firstRoute.getNodes().set(firstNodeIndex, secondNode);
-        secondRoute.getNodes().set(secondNodeIndex, firstNode);
+
+        firstRoute.setNode(firstNodeIndex, secondNode);
+
+        try{
+            secondRoute.setNode(secondNodeIndex, firstNode);
+        }catch(NodeNotSupportedException e){
+            firstRoute.setNode(firstNodeIndex, firstNode);
+            throw e;
+        }
+
         totalCost = current.updateTotalCost();
 
-        firstRoute.getNodes().set(firstNodeIndex, firstNode);
-        secondRoute.getNodes().set(secondNodeIndex, secondNode);
+        firstRoute.setNode(firstNodeIndex, firstNode);
+        secondRoute.setNode(secondNodeIndex, secondNode);
 
         current.updateTotalCost();
 
@@ -33,8 +43,8 @@ public class BestExchange implements Strategy {
     public void apply(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
         Node firstNode = firstRoute.getNodeByIndex(firstNodeIndex);
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
-        firstRoute.getNodes().set(firstNodeIndex, secondNode);
-        secondRoute.getNodes().set(secondNodeIndex, firstNode);
+        firstRoute.setNode(firstNodeIndex, secondNode);
+        secondRoute.setNode(secondNodeIndex, firstNode);
         routeList.updateTotalCost();
     }
 }
