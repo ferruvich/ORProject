@@ -1,10 +1,7 @@
 package core;
 
 import exceptions.NodeNotSupportedException;
-
-/**
- * TODO verificare l'aggiunta di nodi, essa non deve far superare il carico massimo del camion (in A1 è 1500)
- */
+import org.apache.commons.lang3.SerializationUtils;
 
 public class BestExchange implements Strategy {
 
@@ -13,28 +10,23 @@ public class BestExchange implements Strategy {
 
         double totalCost;
 
-        RouteList current = new RouteList(routeList);
+        RouteList current = SerializationUtils.clone(routeList);
+
         Route firstRoute = current.getRouteByHash(firstRouteHash);
         Route secondRoute = current.getRouteByHash(secondRouteHash);
 
         Node firstNode = firstRoute.getNodeByIndex(firstNodeIndex);
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
 
-        firstRoute.setNode(firstNodeIndex, secondNode);
 
         try{
+            firstRoute.setNode(firstNodeIndex, secondNode);
             secondRoute.setNode(secondNodeIndex, firstNode);
         }catch(NodeNotSupportedException e){
-            firstRoute.setNode(firstNodeIndex, firstNode);
-            throw e;
+            return Double.MAX_VALUE;
         }
 
         totalCost = current.updateTotalCost();
-
-        firstRoute.setNode(firstNodeIndex, firstNode);
-        secondRoute.setNode(secondNodeIndex, secondNode);
-
-        current.updateTotalCost();
 
         return totalCost;
     }

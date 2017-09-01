@@ -42,25 +42,7 @@ public class Best {
                         double previousCost = routeList.updateTotalCost();
                         double newCost = previousCost;
 
-//                        if(strategy instanceof BestRelocate){
-//                            System.out.println("1: ");
-//                            for(Route rr : routeList.getRoutes()){
-//                                Best.printRoute(rr);
-//                            }
-//                        }
-
-                        try {
-                            newCost = strategy.estimate(routeList, route.hashCode(), r.hashCode(), i, j);
-                        }catch(NodeNotDeletableException | NodeNotSupportedException e){
-                            //System.out.println(e.getMessage());
-                        }
-
-//                        if(strategy instanceof BestRelocate){
-//                            System.out.println("2: ");
-//                            for(Route rr : routeList.getRoutes()){
-//                                Best.printRoute(rr);
-//                            }
-//                        }
+                        newCost = strategy.estimate(routeList, route.hashCode(), r.hashCode(), i, j);
 
                         double gain = previousCost - newCost;
 

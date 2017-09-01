@@ -2,9 +2,10 @@ package core;
 
 import utils.DistanceMatrix;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class RouteList {
+public class RouteList implements Cloneable, Serializable{
 
     private ArrayList<Route> routes;
     private double totalCost = Double.MAX_VALUE;
@@ -16,6 +17,11 @@ public class RouteList {
     public RouteList(RouteList routeList) {
         this.routes = routeList.getRoutes();
         this.totalCost = routeList.getTotalCost();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public void initialize(TSPInstance instance) {

@@ -14,32 +14,19 @@ public class Euristica2Fasi {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
-        // crea le rotte iniziali
-        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/A1.json");
+        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/N6.json");
         DistanceMatrix.getInstance().initialize(in);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
 
         List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
-//        for (int i = 0; i < Euristica2Fasi.NUMBER_OF_ITERATION; i++) {
 
         Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
         FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
         algorithmOneFutures.add(futureTask);
         executor.execute(futureTask);
-//        }
-
-//        List<FutureTask<Pair<RouteList, RouteList>>> algorithmTwoFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
-//        for (int j = 0; j < Euristica2Fasi.NUMBER_OF_ITERATION; j++) {
-//            Algorithm algorithmTwo = new Algorithm(in, Algorithm.ALGORITHM_TWO, "Iteration " + (j + 1));
-//            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmTwo);
-//            algorithmTwoFutures.add(futureTask);
-//            executor.execute(futureTask);
-//        }
-
         getBestRouteList("Algorithm One", algorithmOneFutures);
-//        getBestRouteList("Algorithm Two", algorithmTwoFutures);
 
         executor.shutdown();
     }
@@ -67,8 +54,6 @@ public class Euristica2Fasi {
     }
 
     private static void printPair(Pair<RouteList, RouteList> routeList) {
-        //System.out.println("Original Route List");
-        //printRouteList(routeList.getL());
         System.out.println("Better Route List");
         for(Route r: routeList.getR().getRoutes()){
             Best.printRoute(r);
@@ -80,7 +65,6 @@ public class Euristica2Fasi {
     private static void printRouteList(RouteList routeList) {
         int i = 0;
 
-        //System.out.println();
         for (Route route : routeList.getRoutes()) {
             System.out.print("Numero percorso: " + (i++) + ": ");
             for (Node n : route.getNodes()) {
@@ -88,6 +72,5 @@ public class Euristica2Fasi {
             }
             System.out.println();
         }
-        //System.out.println();
     }
 }

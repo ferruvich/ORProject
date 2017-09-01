@@ -1,6 +1,8 @@
 package core;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
 
     private int index;
     private int xcoord;

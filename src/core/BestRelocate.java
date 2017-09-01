@@ -2,10 +2,7 @@ package core;
 
 import exceptions.NodeNotDeletableException;
 import exceptions.NodeNotSupportedException;
-
-/**
- * TODO verificare l'aggiunta di nodi, essa non deve far superare il carico massimo del camion (in A1 è 1500)
- */
+import org.apache.commons.lang3.SerializationUtils;
 
 public class BestRelocate implements Strategy {
 
@@ -13,7 +10,7 @@ public class BestRelocate implements Strategy {
     public double estimate(RouteList routeList, int firstRouteHash, int secondRouteHash, int firstNodeIndex, int secondNodeIndex) {
         double totalCost;
 
-        RouteList current = new RouteList(routeList);
+        RouteList current = SerializationUtils.clone(routeList);
         Route firstRoute = current.getRouteByHash(firstRouteHash);
         Route secondRoute = current.getRouteByHash(secondRouteHash);
 
@@ -22,23 +19,18 @@ public class BestRelocate implements Strategy {
         Node a = firstRoute.getNodeByIndex(firstNodeIndex);
         Node b = secondRoute.getNodeByIndex(secondNodeIndex);
 
-        firstRoute.deleteNode(firstNodeIndex);
-
+        try{
+            firstRoute.deleteNode(firstNodeIndex);
+        }catch(NodeNotDeletableException e){
+            return Double.MAX_VALUE;
+        }
         try{
             secondRoute.addNode(secondNodeIndex, a);
         }catch(NodeNotSupportedException e){
-            firstRoute.addNode(firstNodeIndex, a);
-            throw e;
+            return Double.MAX_VALUE;
         }
 
         totalCost = current.updateTotalCost();
-
-        secondRoute.deleteNode(secondNodeIndex);
-        firstRoute.addNode(firstNodeIndex, a);
-
-
-        current.updateTotalCost();
-
 
         return totalCost;
 
@@ -46,14 +38,13 @@ public class BestRelocate implements Strategy {
 
     @Override
     public void apply(RouteList routeList, Route firstRoute, Route secondRoute, int firstNodeIndex, int secondNodeIndex) {
-        RouteList current = routeList;
 
-        current.updateEachRouteCost();
+        routeList.updateEachRouteCost();
 
         Node a = firstRoute.getNodeByIndex(firstNodeIndex);
         firstRoute.deleteNode(firstNodeIndex);
         secondRoute.addNode(secondNodeIndex, a);
 
-        current.updateTotalCost();
+        routeList.updateTotalCost();
     }
 }

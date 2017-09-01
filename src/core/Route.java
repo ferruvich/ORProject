@@ -4,9 +4,10 @@ import exceptions.NodeNotDeletableException;
 import exceptions.NodeNotSupportedException;
 import utils.DistanceMatrix;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Route {
+public class Route implements Serializable{
     private ArrayList<Node> nodes;
     private double cost = 0.0;
     private int totLinehaul = 0;
@@ -25,9 +26,9 @@ public class Route {
     }
 
     public void addNode(int index, Node n) throws NodeNotSupportedException{
-        if((n.getType() == "Linehaul") && ((totLinehaul + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity())){
+        if((n.getType().equals("Linehaul")) && ((totLinehaul + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity())){
             throw new NodeNotSupportedException("Il nodo non è aggiungibile");
-        }else {
+        }else{
             this.nodes.add(index, n);
             if(n.getType().equals("Linehaul")){
                 totLinehaul += n.getCapacity();
@@ -38,7 +39,7 @@ public class Route {
     }
 
     public void setNode(int index, Node n) throws NodeNotSupportedException{
-        if((n.getType() == "Linehaul") && ((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity()){
+        if((n.getType().equals("Linehaul")) && ((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity()){
             throw new NodeNotSupportedException("Il nodo non è aggiungibile");
         }else{
             Node nn = this.nodes.get(index);
