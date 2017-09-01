@@ -33,7 +33,6 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
 
         try {
             Best best = null;
-
             routeList.initialize(in);
             System.out.println("Rotte iniziali");
             for(Route r: routeList.getRoutes()){
@@ -42,11 +41,9 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
             routeList.updateTotalCost();
             System.out.println("TotalCost: " + routeList.getTotalCost());
             original = new RouteList(routeList);
-            int i = 0;
             if (type == Algorithm.ALGORITHM_ONE) {
                 System.out.println("\n\nBest exchange start\n\n");
                 while (true){
-                    System.out.println(i++);
                     ArrayList<Route> routes = routeList.getRoutes();
                     for (Route currentRoute : routes) {
                         best = new Best(routeList, new BestExchange());
@@ -64,16 +61,14 @@ public class Algorithm implements Callable<Pair<RouteList, RouteList>> {
                     }
                     nodeToApply.clear();
                 }
-
                 for(Route r : routeList.getRoutes()){
                     Best.printRoute(r);
                 }
                 routeList.updateTotalCost();
                 System.out.println("Total cost -> " + routeList.getTotalCost());
-                i = 0;
+
                 System.out.println("\n\nBest relocate start\n\n");
                 while (true) {
-                    System.out.println(i++);
                     ArrayList<Route> routes = routeList.getRoutes();
                     for (Route currentRoute : routes) {
                         best = new Best(routeList, new BestRelocate());

@@ -1,5 +1,7 @@
 package core;
 
+import utils.JsonReader;
+
 import java.util.ArrayList;
 
 public class TSPInstance {
@@ -26,8 +28,13 @@ public class TSPInstance {
 
     public static TSPInstance getInstance(){
         if(instance == null) {
-            return new TSPInstance();
+            instance = new TSPInstance();
         }
+        return instance;
+    }
+
+    public static TSPInstance getInstance(String filePath){
+        instance = JsonReader.getInstance().getSpecifications(filePath);
         return instance;
     }
 

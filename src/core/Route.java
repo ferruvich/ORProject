@@ -62,7 +62,7 @@ public class Route implements Serializable{
             throw new NodeNotDeletableException("Route vuota");
         }
         else if(this.nodes.get(index) == null){
-            throw  new NodeNotDeletableException("Non esiste il nodo richiesto");
+            throw new NodeNotDeletableException("Non esiste il nodo richiesto");
         }
         else if(this.nodes.size() == 3 && this.nodes.get(0).getType().equals("Warehouse") && this.nodes.get(2).getType().equals("Warehouse")){
             throw new NodeNotDeletableException("Nodo non eliminabile, si svuoterebbe la route");

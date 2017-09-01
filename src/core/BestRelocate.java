@@ -45,6 +45,8 @@ public class BestRelocate implements Strategy {
         firstRoute.deleteNode(firstNodeIndex);
         secondRoute.addNode(secondNodeIndex, a);
 
+        routeList.updateEachRouteCost();
+
         routeList.updateTotalCost();
     }
 }

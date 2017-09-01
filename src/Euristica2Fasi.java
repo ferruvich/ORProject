@@ -14,7 +14,7 @@ public class Euristica2Fasi {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
-        TSPInstance in = JsonReader.getInstance().getSpecifications("InstancesJSON/N6.json");
+        TSPInstance in = TSPInstance.getInstance("InstancesJSON/N4.json");
         DistanceMatrix.getInstance().initialize(in);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);

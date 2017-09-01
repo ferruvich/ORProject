@@ -37,6 +37,7 @@ public class BestExchange implements Strategy {
         Node secondNode = secondRoute.getNodeByIndex(secondNodeIndex);
         firstRoute.setNode(firstNodeIndex, secondNode);
         secondRoute.setNode(secondNodeIndex, firstNode);
+        routeList.updateEachRouteCost();
         routeList.updateTotalCost();
     }
 }
