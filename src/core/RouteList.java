@@ -84,8 +84,8 @@ public class RouteList implements Cloneable, Serializable{
         }
     }
 
-    private void addNodes(TSPInstance instance, ArrayList<Node> linehaulNodes) {
-        for (Node n : linehaulNodes) {
+    private void addNodes(TSPInstance instance, ArrayList<Node> otherNodes) {
+        for (Node n : otherNodes) {
             Map<Node, Integer> lastNodes = new HashMap<>();
             Map<Node, Integer> lastNodesSorted = new TreeMap<>(
                     (o1, o2) -> {

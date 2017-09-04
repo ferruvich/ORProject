@@ -27,8 +27,10 @@ public class Route implements Serializable{
 
     public void addNode(int index, Node n) throws NodeNotSupportedException{
         if((n.getType().equals("Linehaul")) && ((totLinehaul + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity())){
-            throw new NodeNotSupportedException("Il nodo non è aggiungibile");
-        }else{
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile, si supererebbe la capacità");
+        } else if((n.getType().equals("Linehaul")) && nodes.get(index-1).getType().equals("Backhaul")) {
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Linehaul non può stare dopo un backhaul");
+        } else {
             this.nodes.add(index, n);
             if(n.getType().equals("Linehaul")){
                 totLinehaul += n.getCapacity();
@@ -40,8 +42,10 @@ public class Route implements Serializable{
 
     public void setNode(int index, Node n) throws NodeNotSupportedException{
         if((n.getType().equals("Linehaul")) && ((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity()){
-            throw new NodeNotSupportedException("Il nodo non è aggiungibile");
-        }else{
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile per superamento capacità");
+        } else if((n.getType().equals("Linehaul")) && nodes.get(index-1).getType().equals("Backhaul")) {
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Linehaul non può stare dopo un backhaul");
+        } else {
             Node nn = this.nodes.get(index);
             if(nn.getType().equals("Linehaul")){
                 totLinehaul -= nn.getCapacity();

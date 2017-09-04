@@ -39,7 +39,7 @@ public class Best {
                 for (int j = 1; j < r.getNodes().size() - 1; j++) {
                     Node b = r.getNodes().get(j);
 
-                    if (b.getType().equals(a.getType()) && (!a.equals(b))) {
+                    if ((!a.equals(b))) {
                         double previousCost = routeList.updateTotalCost();
                         double newCost = previousCost;
 
