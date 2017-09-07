@@ -30,6 +30,8 @@ public class Route implements Serializable{
             throw new NodeNotSupportedException("Il nodo non è aggiungibile, si supererebbe la capacità");
         } else if((n.getType().equals("Linehaul")) && nodes.get(index-1).getType().equals("Backhaul")) {
             throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Linehaul non può stare dopo un backhaul");
+        } else if((n.getType().equals("Backhaul")) && nodes.get(index).getType().equals("Linehaul")){
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Backhaul non può stare prima di un Linehaul");
         } else {
             this.nodes.add(index, n);
             if(n.getType().equals("Linehaul")){
@@ -44,7 +46,9 @@ public class Route implements Serializable{
         if((n.getType().equals("Linehaul")) && ((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity()){
             throw new NodeNotSupportedException("Il nodo non è aggiungibile per superamento capacità");
         } else if((n.getType().equals("Linehaul")) && nodes.get(index-1).getType().equals("Backhaul")) {
-            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Linehaul non può stare dopo un backhaul");
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Linehaul non può stare dopo un Backhaul");
+        } else if((n.getType().equals("Backhaul")) && nodes.get(index+1).getType().equals("Linehaul")){
+            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Backhaul non può stare prima di un Linehaul");
         } else {
             Node nn = this.nodes.get(index);
             if(nn.getType().equals("Linehaul")){
@@ -64,12 +68,12 @@ public class Route implements Serializable{
     public void deleteNode(int index) throws NodeNotDeletableException{
         if(this.nodes.size() == 0){
             throw new NodeNotDeletableException("Route vuota");
-        }
-        else if(this.nodes.get(index) == null){
+        } else if(this.nodes.get(index) == null){
             throw new NodeNotDeletableException("Non esiste il nodo richiesto");
-        }
-        else if(this.nodes.size() == 3 && this.nodes.get(0).getType().equals("Warehouse") && this.nodes.get(2).getType().equals("Warehouse")){
+        } else if(this.nodes.size() == 3 && this.nodes.get(0).getType().equals("Warehouse") && this.nodes.get(2).getType().equals("Warehouse")) {
             throw new NodeNotDeletableException("Nodo non eliminabile, si svuoterebbe la route");
+        } else if( this.nodes.stream().filter((node -> node.getType().equals("Linehaul") && nodes.indexOf(node) != index)).count() == 0 ){
+            throw new NodeNotDeletableException("Nodo non eliminabile, Si avrebbero solo nodi Backhaul");
         }else{
             Node n = this.nodes.get(index);
             this.nodes.remove(index);

@@ -124,9 +124,11 @@ public class Best {
     public static void printRoute(Route route) {
         System.out.print("Route: ");
         for (Node node : route.getNodes()) {
-            System.out.print(node.getIndex() + " ");
+            String type = node.getType().substring(0,1);
+            System.out.print(node.getIndex() + type + " ");
         }
-        System.out.println(" totLinehaul -> " + route.getTotLinehaul());
+        route.updateCost();
+        System.out.println(" costo Totale -> " + route.getCost());
     }
 
 
