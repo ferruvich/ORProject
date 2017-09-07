@@ -18,19 +18,21 @@ public class Euristica2Fasi {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
-        String fileName = "InstancesJSON/A1.json";
-        TSPInstance in = TSPInstance.getInstance(fileName);
-        DistanceMatrix.getInstance().initialize(in);
+        String fileName = "InstancesJSON/F2.json";
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newFixedThreadPool(3);
 
 
         List<FutureTask<Pair<RouteList, RouteList>>> algorithmOneFutures = new ArrayList<FutureTask<Pair<RouteList, RouteList>>>();
 
-        Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
-        FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
-        algorithmOneFutures.add(futureTask);
-        executor.execute(futureTask);
+        for(int i = 0; i< NUMBER_OF_ITERATION; i++) {
+            TSPInstance in = TSPInstance.getInstance(fileName);
+            DistanceMatrix.getInstance().initialize(in);
+            Algorithm algorithmOne = new Algorithm(in, Algorithm.ALGORITHM_ONE, "Iteration 1");// + (i + 1)); // exchange
+            FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
+            algorithmOneFutures.add(futureTask);
+            executor.execute(futureTask);
+        }
         getBestRouteList("Algorithm One", algorithmOneFutures, fileName);
 
         executor.shutdown();

@@ -1,9 +1,12 @@
 package core;
 
+import exceptions.NodeNotDeletableException;
+import exceptions.NodeNotSupportedException;
 import utils.DistanceMatrix;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RouteList implements Cloneable, Serializable{
 
@@ -73,10 +76,10 @@ public class RouteList implements Cloneable, Serializable{
         }
 
         //Inseriamo gli altri nodi linehaul
-        this.addNodes(instance, linehaulNodes);
+        this.addNodes(linehaulNodes);
 
         //Aggiungiamo i nodi backhaul
-        this.addNodes(instance, backhaulNodes);
+        this.addNodes(backhaulNodes);
 
         //Finiamo, aggiungendo il magazzino a fine route
         for (Route r : routes) {
@@ -84,7 +87,8 @@ public class RouteList implements Cloneable, Serializable{
         }
     }
 
-    private void addNodes(TSPInstance instance, ArrayList<Node> otherNodes) {
+    private void addNodes(ArrayList<Node> otherNodes) {
+        ArrayList<Node> toReturn = (ArrayList<Node>) otherNodes.clone();
         for (Node n : otherNodes) {
             Map<Node, Integer> lastNodes = new HashMap<>();
             Map<Node, Integer> lastNodesSorted = new TreeMap<>(
@@ -100,10 +104,42 @@ public class RouteList implements Cloneable, Serializable{
             }
             lastNodesSorted.putAll(lastNodes);
             for (Node toCheck : lastNodesSorted.keySet()) {
-                if (routes.get(lastNodes.get(toCheck)).getTotLinehaul() + n.getCapacity() <= instance.getMaxCapacity() || n.getType().equals("Backhaul")) {
+                if (routes.get(lastNodes.get(toCheck)).getTotLinehaul() + n.getCapacity() <= TSPInstance.getInstance().getMaxCapacity() || n.getType().equals("Backhaul")) {
                     routes.get(lastNodes.get(toCheck)).addToRoute(n);
+                    toReturn.remove(n);
                     break;
                 }
+            }
+        }
+        if(!toReturn.isEmpty()) {
+            for (Node n : toReturn) {
+                final boolean[] added = {false};
+                this.routes.stream().sorted(Comparator.comparingInt(Route::getTotLinehaul)).forEach((Route route) -> {
+                    if (!added[0]) {
+                        route.getNodes().stream().filter(node -> node.getType().equals("Linehaul"))
+                                .sorted(Comparator.comparingInt(Node::getCapacity)).forEach((Node node) -> {
+                            if (!added[0]) {
+                                this.routes.stream().filter(other -> !other.equals(route))
+                                        .sorted(Comparator.comparingInt(Route::getTotLinehaul).reversed()).forEach((Route otherRoute) -> {
+                                    try {
+                                        if (!added[0]) {
+                                            otherRoute.addNode(otherRoute.getNodes().size(), node);
+                                            route.deleteNode(route.getNodes().indexOf(node));
+                                            route.addNode(route.getNodes().size(), n);
+                                            added[0] = true;
+                                        }
+                                    } catch (NodeNotSupportedException nnse) {
+                                        if (otherRoute.getNodes().contains(node)) {
+                                            otherRoute.getNodes().remove(node);
+                                        }
+                                    } catch (NodeNotDeletableException nnde) {
+                                        otherRoute.deleteNode(otherRoute.getNodes().size() - 1);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             }
         }
     }
@@ -114,10 +150,6 @@ public class RouteList implements Cloneable, Serializable{
 
     public double getTotalCost() {
         return totalCost;
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
     }
 
     public double updateTotalCost() {

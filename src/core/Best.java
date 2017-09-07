@@ -4,10 +4,6 @@ import utils.NodeRoute;
 
 import java.util.ArrayList;
 
-/**
- * TODO * Levare b.getType().equals(a.getType()) ERRATO e prevedere, nella classe route,
- * TODO * un controllo sulla posizione di linehaul e backhaul (lanciare una delle eccezioni create nel caso)
- */
 public class Best {
     private RouteList routeList;
     private Strategy strategy;
@@ -128,6 +124,7 @@ public class Best {
             System.out.print(node.getIndex() + type + " ");
         }
         route.updateCost();
+        System.out.print(" totLinehaul ->" + route.getTotLinehaul());
         System.out.println(" costo Totale -> " + route.getCost());
     }
 
