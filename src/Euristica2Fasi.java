@@ -3,6 +3,10 @@ import utils.DistanceMatrix;
 import utils.JsonReader;
 import utils.Pair;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -14,7 +18,8 @@ public class Euristica2Fasi {
     public static final int NUMBER_OF_ITERATION = 10;
 
     public static void main(String[] args) {
-        TSPInstance in = TSPInstance.getInstance("InstancesJSON/C1.json");
+        String fileName = "InstancesJSON/A1.json";
+        TSPInstance in = TSPInstance.getInstance(fileName);
         DistanceMatrix.getInstance().initialize(in);
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -26,12 +31,12 @@ public class Euristica2Fasi {
         FutureTask<Pair<RouteList, RouteList>> futureTask = new FutureTask<Pair<RouteList, RouteList>>(algorithmOne);
         algorithmOneFutures.add(futureTask);
         executor.execute(futureTask);
-        getBestRouteList("Algorithm One", algorithmOneFutures);
+        getBestRouteList("Algorithm One", algorithmOneFutures, fileName);
 
         executor.shutdown();
     }
 
-    private static void getBestRouteList(String name, List<FutureTask<Pair<RouteList, RouteList>>> algorithmFutures) {
+    private static void getBestRouteList(String name, List<FutureTask<Pair<RouteList, RouteList>>> algorithmFutures, String fileName) {
         List<Pair<RouteList, RouteList>> pairs = new ArrayList<Pair<RouteList, RouteList>>();
         for (FutureTask<Pair<RouteList, RouteList>> task : algorithmFutures) {
             try {
@@ -51,6 +56,7 @@ public class Euristica2Fasi {
         }
         System.out.println(name);
         printPair(bestPair);
+        saveBest(bestPair.getR(), fileName);
     }
 
     private static void printPair(Pair<RouteList, RouteList> routeList) {
@@ -72,5 +78,37 @@ public class Euristica2Fasi {
             }
             System.out.println();
         }
+    }
+
+    private static void saveBest(RouteList routeList, String fileName){
+        String nameFile = "Results/" + fileName.substring(fileName.indexOf('/')+1, fileName.indexOf('.')) + "-best.txt";
+        BufferedWriter writer = null;
+        int i = 0;
+
+        System.out.println("Saving...");
+
+        try {
+            File file = new File(nameFile);
+            writer = new BufferedWriter(new FileWriter(file));
+
+            for (Route route : routeList.getRoutes()) {
+                writer.write("Route " + (++i) + " " + route.toString());
+                writer.newLine();
+            }
+
+            writer.newLine();
+            writer.write("Total cost: " + Double.toString(routeList.getTotalCost()));
+        }catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Saved!");
+
     }
 }

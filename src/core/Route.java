@@ -149,4 +149,14 @@ public class Route implements Serializable{
     public Node getNodeByIndex(int index) {
         return this.nodes.get(index);
     }
+
+    public String toString(){
+        String result = "";
+
+        for(Node node : nodes){
+            result += node.getIndex() + node.getType().substring(0, 1) + " ";
+        }
+
+        return result;
+    }
 }
