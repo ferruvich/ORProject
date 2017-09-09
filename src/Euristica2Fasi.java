@@ -20,7 +20,7 @@ public class Euristica2Fasi {
     public static void main(String[] args) {
         //for(File f : new File("InstancesJSON").listFiles(filenameFilter)) {
             //String fileName = f.getPath().replace("\\", "/");
-            String fileName = "InstancesJSON/K1.json";
+            String fileName = "InstancesJSON/K2.json";
 
             ExecutorService executor = Executors.newFixedThreadPool(4);
 
