@@ -1,0 +1,46 @@
+Soluzione del problema I3
+
+Dettagli della soluzione: 
+	Costo totale: 328129.8618141902
+	Tempo Trascorso: 26908
+
+Route 1:
+Costo = 42050.8479196589
+Totale Linehaul = 2648
+Totale Backhaul = 2750
+Numero nodi nella route = 13
+Sequenza : 
+0 81 71 85 51 67 84 24 32 21 5 26 8 27 0 
+
+Route 2:
+Costo = 70368.76165148844
+Totale Linehaul = 4920
+Totale Backhaul = 2884
+Numero nodi nella route = 14
+Sequenza : 
+0 80 46 48 73 59 63 57 82 50 35 33 9 7 3 0 
+
+Route 3:
+Costo = 43205.80299196886
+Totale Linehaul = 3953
+Totale Backhaul = 4059
+Numero nodi nella route = 15
+Sequenza : 
+0 78 79 54 88 64 60 68 65 47 66 42 38 28 23 18 0 
+
+Route 4:
+Costo = 94062.4385450885
+Totale Linehaul = 5622
+Totale Backhaul = 8290
+Numero nodi nella route = 26
+Sequenza : 
+0 55 89 87 49 72 56 62 70 90 76 86 30 1 36 20 2 29 15 10 41 39 4 6 19 34 45 0 
+
+Route 5:
+Costo = 78442.01070598552
+Totale Linehaul = 4284
+Totale Backhaul = 7633
+Numero nodi nella route = 22
+Sequenza : 
+0 75 74 69 58 61 52 83 77 53 25 12 44 13 37 43 22 40 16 31 17 14 11 0 
+

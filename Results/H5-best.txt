@@ -1,0 +1,38 @@
+Soluzione del problema H5
+
+Dettagli della soluzione: 
+	Costo totale: 266129.8458332491
+	Tempo Trascorso: 15079
+
+Route 1:
+Costo = 80324.59452524068
+Totale Linehaul = 6217
+Totale Backhaul = 2213
+Numero nodi nella route = 18
+Sequenza : 
+0 61 42 66 45 30 54 41 32 29 43 63 60 68 2 20 6 4 13 0 
+
+Route 2:
+Costo = 73798.07808262442
+Totale Linehaul = 5925
+Totale Backhaul = 3941
+Numero nodi nella route = 21
+Sequenza : 
+0 33 31 55 48 40 37 59 47 52 38 46 26 58 36 8 19 12 22 3 16 1 0 
+
+Route 3:
+Costo = 75831.24393785586
+Totale Linehaul = 6597
+Totale Backhaul = 3295
+Numero nodi nella route = 19
+Sequenza : 
+0 64 27 67 34 50 56 25 39 62 44 24 57 35 10 5 21 23 11 17 0 
+
+Route 4:
+Costo = 36175.92928752817
+Totale Linehaul = 2462
+Totale Backhaul = 2032
+Numero nodi nella route = 10
+Sequenza : 
+0 51 28 49 53 65 14 7 9 18 15 0 
+

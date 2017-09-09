@@ -1,0 +1,46 @@
+Soluzione del problema H2
+
+Dettagli della soluzione: 
+	Costo totale: 289098.5603797878
+	Tempo Trascorso: 22751
+
+Route 1:
+Costo = 57416.1016137381
+Totale Linehaul = 4929
+Totale Backhaul = 2869
+Numero nodi nella route = 16
+Sequenza : 
+0 48 40 38 46 26 58 56 50 34 67 25 12 22 3 16 1 0 
+
+Route 2:
+Costo = 62164.497193088646
+Totale Linehaul = 3506
+Totale Backhaul = 2032
+Numero nodi nella route = 12
+Sequenza : 
+0 51 28 60 68 53 49 31 18 14 7 9 15 0 
+
+Route 3:
+Costo = 47107.460266798604
+Totale Linehaul = 3610
+Totale Backhaul = 1072
+Numero nodi nella route = 10
+Sequenza : 
+0 33 55 37 59 65 47 52 36 8 19 0 
+
+Route 4:
+Costo = 71682.74711448888
+Totale Linehaul = 4945
+Totale Backhaul = 3752
+Numero nodi nella route = 18
+Sequenza : 
+0 61 63 42 66 45 30 54 41 32 29 43 11 17 20 2 6 4 13 0 
+
+Route 5:
+Costo = 50727.75419167357
+Totale Linehaul = 4211
+Totale Backhaul = 1756
+Numero nodi nella route = 12
+Sequenza : 
+0 44 62 39 24 27 57 64 35 10 23 21 5 0 
+

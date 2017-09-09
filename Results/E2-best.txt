@@ -1,0 +1,38 @@
+Soluzione del problema E2
+
+Dettagli della soluzione: 
+	Costo totale: 222850.83324473657
+	Tempo Trascorso: 3750
+
+Route 1:
+Costo = 39349.15924507461
+Totale Linehaul = 3493
+Totale Backhaul = 198
+Numero nodi nella route = 8
+Sequenza : 
+0 28 45 31 19 36 16 27 13 0 
+
+Route 2:
+Costo = 44567.87160233398
+Totale Linehaul = 4105
+Totale Backhaul = 1380
+Numero nodi nella route = 9
+Sequenza : 
+0 22 32 40 42 26 20 29 8 2 0 
+
+Route 3:
+Costo = 71479.1427235886
+Totale Linehaul = 3940
+Totale Backhaul = 4289
+Numero nodi nella route = 17
+Sequenza : 
+0 44 34 33 43 17 38 18 10 11 5 15 1 14 4 12 6 9 0 
+
+Route 4:
+Costo = 67454.65967373937
+Totale Linehaul = 4116
+Totale Backhaul = 1173
+Numero nodi nella route = 11
+Sequenza : 
+0 23 21 37 24 39 30 35 41 25 3 7 0 
+

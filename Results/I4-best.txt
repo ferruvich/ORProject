@@ -1,0 +1,54 @@
+Soluzione del problema I4
+
+Dettagli della soluzione: 
+	Costo totale: 323337.65743641806
+	Tempo Trascorso: 40468
+
+Route 1:
+Costo = 84396.86203952368
+Totale Linehaul = 5548
+Totale Backhaul = 7855
+Numero nodi nella route = 25
+Sequenza : 
+0 84 67 89 49 72 56 62 70 90 76 86 30 1 36 20 2 29 15 10 39 4 6 19 34 45 0 
+
+Route 2:
+Costo = 78442.01070598552
+Totale Linehaul = 4284
+Totale Backhaul = 7633
+Numero nodi nella route = 22
+Sequenza : 
+0 75 74 69 58 61 52 83 77 53 25 12 44 13 37 43 22 40 16 31 17 14 11 0 
+
+Route 3:
+Costo = 40122.894410404544
+Totale Linehaul = 3482
+Totale Backhaul = 4059
+Numero nodi nella route = 13
+Sequenza : 
+0 54 88 64 60 68 65 47 66 42 38 28 23 18 0 
+
+Route 4:
+Costo = 60000.06028518339
+Totale Linehaul = 5391
+Totale Backhaul = 2884
+Numero nodi nella route = 16
+Sequenza : 
+0 78 79 50 82 80 46 48 73 59 63 57 9 7 33 3 35 0 
+
+Route 5:
+Costo = 30814.829648349332
+Totale Linehaul = 2295
+Totale Backhaul = 435
+Numero nodi nella route = 6
+Sequenza : 
+0 81 71 85 51 87 41 0 
+
+Route 6:
+Costo = 29561.00034697162
+Totale Linehaul = 427
+Totale Backhaul = 2750
+Numero nodi nella route = 8
+Sequenza : 
+0 55 24 32 21 5 26 8 27 0 
+

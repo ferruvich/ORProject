@@ -1,0 +1,38 @@
+Soluzione del problema E3
+
+Dettagli della soluzione: 
+	Costo totale: 222929.40660345115
+	Tempo Trascorso: 5501
+
+Route 1:
+Costo = 31953.41263811362
+Totale Linehaul = 4105
+Totale Backhaul = 0
+Numero nodi nella route = 7
+Sequenza : 
+0 32 40 29 20 26 42 22 0 
+
+Route 2:
+Costo = 70019.16692918768
+Totale Linehaul = 3544
+Totale Backhaul = 4289
+Numero nodi nella route = 16
+Sequenza : 
+0 44 34 43 17 38 18 10 11 5 15 1 14 4 12 6 9 0 
+
+Route 3:
+Costo = 70038.9608044351
+Totale Linehaul = 4942
+Totale Backhaul = 1173
+Numero nodi nella route = 13
+Sequenza : 
+0 33 23 21 37 24 39 30 35 45 41 25 3 7 0 
+
+Route 4:
+Costo = 50917.86623171475
+Totale Linehaul = 3063
+Totale Backhaul = 1578
+Numero nodi nella route = 9
+Sequenza : 
+0 28 31 19 36 27 16 2 8 13 0 
+

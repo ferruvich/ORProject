@@ -1,0 +1,46 @@
+Soluzione del problema F3
+
+Dettagli della soluzione: 
+	Costo totale: 266582.7381099181
+	Tempo Trascorso: 7782
+
+Route 1:
+Costo = 74047.66978878771
+Totale Linehaul = 4072
+Totale Backhaul = 5194
+Numero nodi nella route = 17
+Sequenza : 
+0 48 51 53 45 38 59 54 44 26 16 11 22 17 28 23 10 9 0 
+
+Route 2:
+Costo = 45948.02012705383
+Totale Linehaul = 4257
+Totale Backhaul = 541
+Numero nodi nella route = 8
+Sequenza : 
+0 37 46 43 60 32 49 50 5 0 
+
+Route 3:
+Costo = 50587.865154814936
+Totale Linehaul = 3062
+Totale Backhaul = 5160
+Numero nodi nella route = 16
+Sequenza : 
+0 55 47 34 57 41 42 21 24 18 3 7 27 8 14 13 6 0 
+
+Route 4:
+Costo = 52590.85186852178
+Totale Linehaul = 1669
+Totale Backhaul = 4465
+Numero nodi nella route = 12
+Sequenza : 
+0 56 40 36 52 25 12 4 30 29 2 20 1 0 
+
+Route 5:
+Costo = 43408.33117073984
+Totale Linehaul = 2350
+Totale Backhaul = 1050
+Numero nodi nella route = 7
+Sequenza : 
+0 31 58 33 35 39 15 19 0 
+

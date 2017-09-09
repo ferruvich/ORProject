@@ -1,0 +1,46 @@
+Soluzione del problema H4
+
+Dettagli della soluzione: 
+	Costo totale: 271014.40672834805
+	Tempo Trascorso: 20767
+
+Route 1:
+Costo = 31673.191210091736
+Totale Linehaul = 2154
+Totale Backhaul = 2032
+Numero nodi nella route = 9
+Sequenza : 
+0 51 33 31 65 14 7 9 18 15 0 
+
+Route 2:
+Costo = 42511.741172391514
+Totale Linehaul = 5180
+Totale Backhaul = 0
+Numero nodi nella route = 11
+Sequenza : 
+0 44 62 56 50 34 67 25 39 24 27 57 0 
+
+Route 3:
+Costo = 63609.83403092259
+Totale Linehaul = 5271
+Totale Backhaul = 3295
+Numero nodi nella route = 17
+Sequenza : 
+0 64 35 42 66 30 41 32 29 43 45 54 21 5 10 23 11 17 0 
+
+Route 4:
+Costo = 62381.60055987657
+Totale Linehaul = 3601
+Totale Backhaul = 2213
+Numero nodi nella route = 12
+Sequenza : 
+0 61 28 63 60 49 53 68 2 20 6 4 13 0 
+
+Route 5:
+Costo = 70838.03975506565
+Totale Linehaul = 4995
+Totale Backhaul = 3941
+Numero nodi nella route = 19
+Sequenza : 
+0 40 48 55 37 59 47 52 38 46 26 58 36 8 19 12 22 3 16 1 0 
+

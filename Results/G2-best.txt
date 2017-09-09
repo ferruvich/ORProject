@@ -1,0 +1,54 @@
+Soluzione del problema G2
+
+Dettagli della soluzione: 
+	Costo totale: 263956.2794932375
+	Tempo Trascorso: 13391
+
+Route 1:
+Costo = 49590.38402174458
+Totale Linehaul = 4205
+Totale Backhaul = 1533
+Numero nodi nella route = 11
+Sequenza : 
+0 51 26 40 35 27 17 28 5 10 6 4 0 
+
+Route 2:
+Costo = 28930.92165444943
+Totale Linehaul = 4049
+Totale Backhaul = 0
+Numero nodi nella route = 8
+Sequenza : 
+0 53 34 52 18 25 41 56 54 0 
+
+Route 3:
+Costo = 47041.19799237422
+Totale Linehaul = 3708
+Totale Backhaul = 2517
+Numero nodi nella route = 13
+Sequenza : 
+0 19 43 57 32 14 29 37 46 9 7 1 12 3 0 
+
+Route 4:
+Costo = 43046.73241894733
+Totale Linehaul = 3960
+Totale Backhaul = 559
+Numero nodi nella route = 8
+Sequenza : 
+0 13 20 44 50 49 47 15 11 0 
+
+Route 5:
+Costo = 49047.56864694037
+Totale Linehaul = 3822
+Totale Backhaul = 0
+Numero nodi nella route = 8
+Sequenza : 
+0 16 31 55 21 45 36 30 24 0 
+
+Route 6:
+Costo = 46299.474758781595
+Totale Linehaul = 4089
+Totale Backhaul = 994
+Numero nodi nella route = 9
+Sequenza : 
+0 33 38 48 22 23 39 42 2 8 0 
+

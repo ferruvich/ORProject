@@ -44,11 +44,13 @@ public class Route implements Serializable{
 
     public void setNode(int index, Node n) throws NodeNotSupportedException{
         if((n.getType().equals("Linehaul")) && ((totLinehaul-nodes.get(index).getCapacity()) + n.getCapacity()) > TSPInstance.getInstance().getMaxCapacity()){
-            throw new NodeNotSupportedException("Il nodo non è aggiungibile per superamento capacità");
+            throw new NodeNotSupportedException("Il nodo non è scambiabile per superamento capacità");
         } else if((n.getType().equals("Linehaul")) && nodes.get(index-1).getType().equals("Backhaul")) {
-            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Linehaul non può stare dopo un Backhaul");
-        } else if((n.getType().equals("Backhaul")) && nodes.get(index+1).getType().equals("Linehaul")){
-            throw new NodeNotSupportedException("Il nodo non è aggiungibile, un nodo Backhaul non può stare prima di un Linehaul");
+            throw new NodeNotSupportedException("Il nodo non è scambiabile, un nodo Linehaul non può stare dopo un Backhaul");
+        } else if((n.getType().equals("Backhaul")) && nodes.get(index+1).getType().equals("Linehaul")) {
+            throw new NodeNotSupportedException("Il nodo non è scambiabile, un nodo Backhaul non può stare prima di un Linehaul");
+        }else if(n.getType().equals("Backhaul") && this.nodes.size() == 3 && this.nodes.get(0).getType().equals("Warehouse") && this.nodes.get(2).getType().equals("Warehouse")) {
+            throw new NodeNotSupportedException("Il nodo non è scambiabile, si avrebbero solo nodi di backhaul");
         } else {
             Node nn = this.nodes.get(index);
             if(nn.getType().equals("Linehaul")){
@@ -153,8 +155,13 @@ public class Route implements Serializable{
     public String toString(){
         String result = "";
 
-        for(Node node : nodes){
-            result += node.getIndex() + node.getType().substring(0, 1) + " ";
+        result += "Costo = " + this.getCost() + "\n";
+        result += "Totale Linehaul = " + this.getTotLinehaul() + "\n";
+        result += "Totale Backhaul = " + this.getTotBackhaul() + "\n";
+        result += "Numero nodi nella route = " + (this.getNodes().size()-2) + "\n";
+        result += "Sequenza : \n";
+        for(Node n: this.getNodes()){
+            result += n.getIndex() + " ";
         }
 
         return result;

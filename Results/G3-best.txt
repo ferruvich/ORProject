@@ -1,0 +1,46 @@
+Soluzione del problema G3
+
+Dettagli della soluzione: 
+	Costo totale: 255769.11230030446
+	Tempo Trascorso: 8860
+
+Route 1:
+Costo = 65002.86451189694
+Totale Linehaul = 5130
+Totale Backhaul = 1810
+Numero nodi nella route = 12
+Sequenza : 
+0 28 17 27 35 33 38 48 22 1 12 3 2 0 
+
+Route 2:
+Costo = 71919.04895188664
+Totale Linehaul = 5293
+Totale Backhaul = 1533
+Numero nodi nella route = 15
+Sequenza : 
+0 16 31 55 21 45 24 30 36 51 26 40 6 5 10 4 0 
+
+Route 3:
+Costo = 43883.90692256534
+Totale Linehaul = 5023
+Totale Backhaul = 559
+Numero nodi nella route = 10
+Sequenza : 
+0 43 53 13 20 44 50 49 47 15 11 0 
+
+Route 4:
+Costo = 28246.122633353294
+Totale Linehaul = 4176
+Totale Backhaul = 0
+Numero nodi nella route = 8
+Sequenza : 
+0 54 34 52 18 25 41 56 19 0 
+
+Route 5:
+Costo = 46717.16928060229
+Totale Linehaul = 4211
+Totale Backhaul = 1701
+Numero nodi nella route = 12
+Sequenza : 
+0 46 23 39 42 37 29 14 32 57 8 7 9 0 
+

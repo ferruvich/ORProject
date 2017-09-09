@@ -1,0 +1,46 @@
+Soluzione del problema C3
+
+Dettagli della soluzione: 
+	Costo totale: 213299.41198936847
+	Tempo Trascorso: 2906
+
+Route 1:
+Costo = 42903.49484719829
+Totale Linehaul = 2562
+Totale Backhaul = 2730
+Numero nodi nella route = 11
+Sequenza : 
+0 21 32 34 25 30 13 18 12 7 10 15 0 
+
+Route 2:
+Costo = 56360.52952413876
+Totale Linehaul = 2348
+Totale Backhaul = 2290
+Numero nodi nella route = 9
+Sequenza : 
+0 22 31 40 23 35 2 20 9 6 0 
+
+Route 3:
+Costo = 23761.72974814193
+Totale Linehaul = 1209
+Totale Backhaul = 0
+Numero nodi nella route = 2
+Sequenza : 
+0 37 27 0 
+
+Route 4:
+Costo = 40318.783419633495
+Totale Linehaul = 1228
+Totale Backhaul = 1744
+Numero nodi nella route = 7
+Sequenza : 
+0 29 24 36 19 3 8 4 0 
+
+Route 5:
+Costo = 49954.874450256
+Totale Linehaul = 2646
+Totale Backhaul = 3542
+Numero nodi nella route = 11
+Sequenza : 
+0 26 28 38 39 33 1 11 14 16 5 17 0 
+

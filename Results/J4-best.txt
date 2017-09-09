@@ -1,0 +1,62 @@
+Soluzione del problema J4
+
+Dettagli della soluzione: 
+	Costo totale: 334985.81699984404
+	Tempo Trascorso: 96677
+
+Route 1:
+Costo = 51378.49535679547
+Totale Linehaul = 6502
+Totale Backhaul = 1010
+Numero nodi nella route = 15
+Sequenza : 
+0 73 58 51 85 82 33 68 27 45 76 43 41 47 15 1 0 
+
+Route 2:
+Costo = 42267.594921675656
+Totale Linehaul = 6483
+Totale Backhaul = 798
+Numero nodi nella route = 13
+Sequenza : 
+0 26 91 75 21 50 80 23 78 77 84 70 19 16 0 
+
+Route 3:
+Costo = 53627.762625922915
+Totale Linehaul = 5608
+Totale Backhaul = 2139
+Numero nodi nella route = 14
+Sequenza : 
+0 52 28 65 71 83 92 30 87 90 46 6 3 5 12 0 
+
+Route 4:
+Costo = 33382.97476465714
+Totale Linehaul = 5749
+Totale Backhaul = 723
+Numero nodi nella route = 11
+Sequenza : 
+0 31 29 20 42 34 72 64 38 61 25 17 0 
+
+Route 5:
+Costo = 53787.53553621581
+Totale Linehaul = 6350
+Totale Backhaul = 813
+Numero nodi nella route = 14
+Sequenza : 
+0 24 49 63 81 37 86 54 22 57 55 59 40 2 14 0 
+
+Route 6:
+Costo = 69748.98962812847
+Totale Linehaul = 5498
+Totale Backhaul = 3562
+Numero nodi nella route = 18
+Sequenza : 
+0 74 53 93 79 35 36 44 62 89 66 67 4 13 18 8 10 11 7 0 
+
+Route 7:
+Costo = 30792.464166448575
+Totale Linehaul = 3757
+Totale Backhaul = 481
+Numero nodi nella route = 8
+Sequenza : 
+0 56 88 32 48 39 69 60 9 0 
+

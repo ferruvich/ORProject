@@ -1,0 +1,38 @@
+Soluzione del problema H3
+
+Dettagli della soluzione: 
+	Costo totale: 274076.28375275614
+	Tempo Trascorso: 17595
+
+Route 1:
+Costo = 78702.09345013586
+Totale Linehaul = 5981
+Totale Backhaul = 2213
+Numero nodi nella route = 18
+Sequenza : 
+0 28 60 63 42 66 45 30 54 41 32 29 43 68 2 20 6 4 13 0 
+
+Route 2:
+Costo = 72512.85703842167
+Totale Linehaul = 5649
+Totale Backhaul = 2582
+Numero nodi nella route = 18
+Sequenza : 
+0 48 55 37 59 47 65 53 49 61 51 33 31 18 14 7 9 8 15 0 
+
+Route 3:
+Costo = 56399.51960074325
+Totale Linehaul = 4211
+Totale Backhaul = 3295
+Numero nodi nella route = 14
+Sequenza : 
+0 44 62 39 24 27 57 64 35 10 5 21 23 11 17 0 
+
+Route 4:
+Costo = 66461.81366345538
+Totale Linehaul = 5360
+Totale Backhaul = 3391
+Numero nodi nella route = 18
+Sequenza : 
+0 40 52 36 46 38 26 58 56 50 34 67 25 12 22 3 16 1 19 0 
+

@@ -1,0 +1,46 @@
+Soluzione del problema G5
+
+Dettagli della soluzione: 
+	Costo totale: 249328.003147792
+	Tempo Trascorso: 15736
+
+Route 1:
+Costo = 31290.031426749
+Totale Linehaul = 4616
+Totale Backhaul = 548
+Numero nodi nella route = 10
+Sequenza : 
+0 43 53 34 52 18 25 41 56 54 8 0 
+
+Route 2:
+Costo = 54845.480156650214
+Totale Linehaul = 5669
+Totale Backhaul = 1364
+Numero nodi nella route = 12
+Sequenza : 
+0 40 28 17 27 35 33 38 48 22 1 12 3 0 
+
+Route 3:
+Costo = 46547.336028473284
+Totale Linehaul = 3313
+Totale Backhaul = 1599
+Numero nodi nella route = 10
+Sequenza : 
+0 46 23 39 42 14 29 37 2 7 9 0 
+
+Route 4:
+Costo = 45712.46763763705
+Totale Linehaul = 4858
+Totale Backhaul = 559
+Numero nodi nella route = 10
+Sequenza : 
+0 57 32 20 13 44 50 49 47 15 11 0 
+
+Route 5:
+Costo = 70932.68789828247
+Totale Linehaul = 5377
+Totale Backhaul = 1533
+Numero nodi nella route = 15
+Sequenza : 
+0 19 16 31 55 21 45 24 30 36 51 26 6 5 10 4 0 
+

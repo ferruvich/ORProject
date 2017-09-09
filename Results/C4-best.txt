@@ -1,0 +1,38 @@
+Soluzione del problema C4
+
+Dettagli della soluzione: 
+	Costo totale: 204115.43829981273
+	Tempo Trascorso: 2328
+
+Route 1:
+Costo = 49954.874450256
+Totale Linehaul = 2646
+Totale Backhaul = 3542
+Numero nodi nella route = 11
+Sequenza : 
+0 26 28 38 39 33 1 11 14 16 5 17 0 
+
+Route 2:
+Costo = 52183.09988213279
+Totale Linehaul = 2574
+Totale Backhaul = 2290
+Numero nodi nella route = 9
+Sequenza : 
+0 27 37 31 40 23 2 20 9 6 0 
+
+Route 3:
+Costo = 53102.200609644264
+Totale Linehaul = 2358
+Totale Backhaul = 1744
+Numero nodi nella route = 9
+Sequenza : 
+0 21 32 24 29 36 19 3 8 4 0 
+
+Route 4:
+Costo = 48875.263357779666
+Totale Linehaul = 2415
+Totale Backhaul = 2730
+Numero nodi nella route = 11
+Sequenza : 
+0 22 35 34 25 30 13 18 12 7 10 15 0 
+

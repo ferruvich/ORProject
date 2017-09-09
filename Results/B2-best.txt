@@ -1,0 +1,46 @@
+Soluzione del problema B2
+
+Dettagli della soluzione: 
+	Costo totale: 201265.85201333463
+	Tempo Trascorso: 5535
+
+Route 1:
+Costo = 44250.72464211419
+Totale Linehaul = 2044
+Totale Backhaul = 1977
+Numero nodi nella route = 8
+Sequenza : 
+0 13 28 24 21 4 3 8 1 0 
+
+Route 2:
+Costo = 29163.400936471822
+Totale Linehaul = 1561
+Totale Backhaul = 557
+Numero nodi nella route = 3
+Sequenza : 
+0 14 19 5 0 
+
+Route 3:
+Costo = 32513.57656531198
+Totale Linehaul = 1548
+Totale Backhaul = 1157
+Numero nodi nella route = 5
+Sequenza : 
+0 26 27 29 9 6 0 
+
+Route 4:
+Costo = 53082.326611032215
+Totale Linehaul = 2254
+Totale Backhaul = 1508
+Numero nodi nella route = 8
+Sequenza : 
+0 12 17 15 22 23 18 2 7 0 
+
+Route 5:
+Costo = 42255.823258404416
+Totale Linehaul = 2433
+Totale Backhaul = 29
+Numero nodi nella route = 6
+Sequenza : 
+0 16 25 30 11 20 10 0 
+

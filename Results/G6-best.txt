@@ -1,0 +1,38 @@
+Soluzione del problema G6
+
+Dettagli della soluzione: 
+	Costo totale: 243079.50853962533
+	Tempo Trascorso: 15848
+
+Route 1:
+Costo = 34790.5227061723
+Totale Linehaul = 3021
+Totale Backhaul = 559
+Numero nodi nella route = 7
+Sequenza : 
+0 43 53 13 15 47 49 11 0 
+
+Route 2:
+Costo = 58480.90643170508
+Totale Linehaul = 6213
+Totale Backhaul = 1153
+Numero nodi nella route = 14
+Sequenza : 
+0 57 32 20 44 50 42 39 23 14 29 37 46 7 9 0 
+
+Route 3:
+Costo = 80617.0336530791
+Totale Linehaul = 7998
+Totale Backhaul = 1533
+Numero nodi nella route = 20
+Sequenza : 
+0 19 54 34 52 18 25 56 41 16 31 55 21 45 24 30 36 6 5 10 4 0 
+
+Route 4:
+Costo = 69191.04574866885
+Totale Linehaul = 6601
+Totale Backhaul = 2358
+Numero nodi nella route = 16
+Sequenza : 
+0 51 26 40 28 17 27 35 33 38 48 22 1 12 3 2 8 0 
+

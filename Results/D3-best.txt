@@ -1,0 +1,62 @@
+Soluzione del problema D3
+
+Dettagli della soluzione: 
+	Costo totale: 245272.45422622812
+	Tempo Trascorso: 3875
+
+Route 1:
+Costo = 27893.775979899492
+Totale Linehaul = 1892
+Totale Backhaul = 362
+Numero nodi nella route = 4
+Sequenza : 
+0 29 34 18 7 0 
+
+Route 2:
+Costo = 41369.90747353148
+Totale Linehaul = 1449
+Totale Backhaul = 1471
+Numero nodi nella route = 6
+Sequenza : 
+0 12 27 17 1 6 3 0 
+
+Route 3:
+Costo = 49557.07038932715
+Totale Linehaul = 2450
+Totale Backhaul = 688
+Numero nodi nella route = 6
+Sequenza : 
+0 20 26 32 24 13 8 0 
+
+Route 4:
+Costo = 23911.955497946263
+Totale Linehaul = 2747
+Totale Backhaul = 0
+Numero nodi nella route = 5
+Sequenza : 
+0 15 37 21 14 30 0 
+
+Route 5:
+Costo = 36167.831810246105
+Totale Linehaul = 2582
+Totale Backhaul = 1160
+Numero nodi nella route = 6
+Sequenza : 
+0 22 36 31 23 5 4 0 
+
+Route 6:
+Costo = 36659.05798971122
+Totale Linehaul = 2575
+Totale Backhaul = 527
+Numero nodi nella route = 6
+Sequenza : 
+0 19 35 38 10 28 2 0 
+
+Route 7:
+Costo = 29712.8550855664
+Totale Linehaul = 2602
+Totale Backhaul = 0
+Numero nodi nella route = 5
+Sequenza : 
+0 11 9 16 25 33 0 
+

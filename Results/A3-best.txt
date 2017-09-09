@@ -1,0 +1,38 @@
+Soluzione del problema A3
+
+Dettagli della soluzione: 
+	Costo totale: 167769.24796545552
+	Tempo Trascorso: 836
+
+Route 1:
+Costo = 46108.98745041727
+Totale Linehaul = 2224
+Totale Backhaul = 851
+Numero nodi nella route = 6
+Sequenza : 
+0 17 13 25 12 10 3 0 
+
+Route 2:
+Costo = 32135.26893214645
+Totale Linehaul = 2010
+Totale Backhaul = 549
+Numero nodi nella route = 5
+Sequenza : 
+0 9 24 20 22 1 0 
+
+Route 3:
+Costo = 21046.814158092537
+Totale Linehaul = 1881
+Totale Backhaul = 752
+Numero nodi nella route = 5
+Sequenza : 
+0 11 15 8 2 5 0 
+
+Route 4:
+Costo = 68478.17742479926
+Totale Linehaul = 3934
+Totale Backhaul = 388
+Numero nodi nella route = 9
+Sequenza : 
+0 18 23 19 6 7 16 21 14 4 0 
+
