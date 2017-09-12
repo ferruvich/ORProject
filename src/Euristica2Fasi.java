@@ -4,10 +4,7 @@ import utils.JsonReader;
 import utils.Pair;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,12 +15,10 @@ public class Euristica2Fasi {
     private static final FilenameFilter filenameFilter = (dir, name) -> name.contains(".json");
 
     public static void main(String[] args) {
-        //for(File f : new File("InstancesJSON").listFiles(filenameFilter)) {
-            //String fileName = f.getPath().replace("\\", "/");
-            String fileName = "InstancesJSON/K2.json";
+        for (File f : new File("InstancesJSON").listFiles(filenameFilter)) {
+            String fileName = f.getPath().replace("\\", "/");
 
-            ExecutorService executor = Executors.newFixedThreadPool(4);
-
+            ExecutorService executor = Executors.newFixedThreadPool(8);
 
             List algorithmOneFutures = new ArrayList<>();
             List algorithmsOne = new ArrayList<>();
@@ -53,7 +48,8 @@ public class Euristica2Fasi {
             getBestRouteList("Algorithm Two", algorithmTwoFutures, algorithmsTwo, fileName);
 
             executor.shutdown();
-        //}
+        }
+
     }
 
     private static void getBestRouteList(String algorithmName, List<FutureTask<Pair<RouteList, RouteList>>> algorithmFutures, List<Algorithm> algorithms,  String fileName) {

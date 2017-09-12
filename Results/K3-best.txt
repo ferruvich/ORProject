@@ -1,0 +1,78 @@
+Soluzione del problema K3
+
+Dettagli della soluzione: 
+	Costo totale: 398135.0281420264
+	Tempo Trascorso: 150832
+
+Route 1:
+Costo = 38380.395617197086
+Totale Linehaul = 1100
+Totale Backhaul = 4733
+Numero nodi nella route = 10
+Sequenza : 
+0 61 53 92 23 34 16 38 28 19 14 0 
+
+Route 2:
+Costo = 25038.12679206909
+Totale Linehaul = 4751
+Totale Backhaul = 0
+Numero nodi nella route = 9
+Sequenza : 
+0 87 86 54 68 105 82 73 41 42 0 
+
+Route 3:
+Costo = 33058.355097048494
+Totale Linehaul = 5186
+Totale Backhaul = 0
+Numero nodi nella route = 10
+Sequenza : 
+0 88 64 110 94 48 81 76 69 45 93 0 
+
+Route 4:
+Costo = 59221.313299943584
+Totale Linehaul = 5095
+Totale Backhaul = 2696
+Numero nodi nella route = 16
+Sequenza : 
+0 50 103 78 47 113 91 108 83 52 109 4 22 24 27 18 8 0 
+
+Route 5:
+Costo = 66107.06258260363
+Totale Linehaul = 5053
+Totale Backhaul = 5823
+Numero nodi nella route = 22
+Sequenza : 
+0 62 65 49 74 99 84 59 104 63 55 6 7 31 11 10 37 3 3 5 29 12 32 0 
+
+Route 6:
+Costo = 43253.74814965927
+Totale Linehaul = 4974
+Totale Backhaul = 1280
+Numero nodi nella route = 11
+Sequenza : 
+0 66 97 56 89 90 79 106 95 39 35 2 0 
+
+Route 7:
+Costo = 37390.22621847423
+Totale Linehaul = 4067
+Totale Backhaul = 1865
+Numero nodi nella route = 12
+Sequenza : 
+0 77 43 60 70 44 75 85 46 1 17 15 33 0 
+
+Route 8:
+Costo = 63292.59859924126
+Totale Linehaul = 5089
+Totale Backhaul = 1615
+Numero nodi nella route = 16
+Sequenza : 
+0 98 51 112 72 67 57 102 100 58 80 71 25 21 20 13 26 0 
+
+Route 9:
+Costo = 32393.20178578983
+Totale Linehaul = 2876
+Totale Backhaul = 534
+Numero nodi nella route = 7
+Sequenza : 
+0 96 107 101 40 111 9 36 0 
+

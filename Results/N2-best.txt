@@ -1,0 +1,86 @@
+Soluzione del problema N2
+
+Dettagli della soluzione: 
+	Costo totale: 493704.1434696298
+	Tempo Trascorso: 674806
+
+Route 1:
+Costo = 37461.17349472379
+Totale Linehaul = 5530
+Totale Backhaul = 382
+Numero nodi nella route = 12
+Sequenza : 
+0 142 76 91 100 70 79 63 146 58 99 147 13 0 
+
+Route 2:
+Costo = 26785.832152987205
+Totale Linehaul = 5408
+Totale Backhaul = 0
+Numero nodi nella route = 9
+Sequenza : 
+0 51 74 73 65 107 60 119 89 104 0 
+
+Route 3:
+Costo = 57400.930140842494
+Totale Linehaul = 5512
+Totale Backhaul = 2162
+Numero nodi nella route = 18
+Sequenza : 
+0 110 143 136 98 130 97 120 126 116 82 129 150 20 50 36 47 49 35 0 
+
+Route 4:
+Costo = 54120.345149566565
+Totale Linehaul = 5442
+Totale Backhaul = 1320
+Numero nodi nella route = 14
+Sequenza : 
+0 139 113 64 144 117 149 93 128 127 66 67 75 5 22 0 
+
+Route 5:
+Costo = 48967.23342886164
+Totale Linehaul = 5377
+Totale Backhaul = 2400
+Numero nodi nella route = 15
+Sequenza : 
+0 105 132 141 52 86 53 85 68 90 138 46 1 14 30 23 0 
+
+Route 6:
+Costo = 49654.697890204334
+Totale Linehaul = 5611
+Totale Backhaul = 1803
+Numero nodi nella route = 15
+Sequenza : 
+0 62 78 72 56 133 92 134 69 95 103 140 34 10 24 32 0 
+
+Route 7:
+Costo = 49747.16467653288
+Totale Linehaul = 5632
+Totale Backhaul = 1580
+Numero nodi nella route = 12
+Sequenza : 
+0 80 101 94 112 71 148 121 118 77 8 11 15 0 
+
+Route 8:
+Costo = 52060.86100930345
+Totale Linehaul = 5533
+Totale Backhaul = 3948
+Numero nodi nella route = 17
+Sequenza : 
+0 84 124 125 145 122 106 137 88 45 29 16 40 21 9 37 18 26 0 
+
+Route 9:
+Costo = 41155.62658585658
+Totale Linehaul = 5664
+Totale Backhaul = 0
+Numero nodi nella route = 11
+Sequenza : 
+0 55 108 115 61 131 114 123 102 96 83 87 0 
+
+Route 10:
+Costo = 76350.27894075084
+Totale Linehaul = 4391
+Totale Backhaul = 9244
+Numero nodi nella route = 27
+Sequenza : 
+0 59 109 54 135 111 81 57 41 25 19 6 2 42 31 38 27 17 28 39 33 43 48 7 4 3 12 44 0 
+

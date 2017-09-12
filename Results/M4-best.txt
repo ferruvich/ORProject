@@ -1,0 +1,62 @@
+Soluzione del problema M4
+
+Dettagli della soluzione: 
+	Costo totale: 387637.7334040557
+	Tempo Trascorso: 415032
+
+Route 1:
+Costo = 107950.18636438319
+Totale Linehaul = 7953
+Totale Backhaul = 4996
+Numero nodi nella route = 29
+Sequenza : 
+0 61 47 57 54 77 108 96 70 78 71 104 64 113 80 109 60 92 27 124 7 4 12 6 17 5 22 10 24 3 0 
+
+Route 2:
+Costo = 39613.77535574622
+Totale Linehaul = 7174
+Totale Backhaul = 0
+Numero nodi nella route = 12
+Sequenza : 
+0 114 53 68 44 43 121 33 31 83 26 82 85 0 
+
+Route 3:
+Costo = 74512.71884506039
+Totale Linehaul = 7650
+Totale Backhaul = 3547
+Numero nodi nella route = 20
+Sequenza : 
+0 84 51 106 75 88 55 94 93 38 105 73 41 98 29 23 14 2 19 25 18 0 
+
+Route 4:
+Costo = 33626.54462504583
+Totale Linehaul = 4353
+Totale Backhaul = 1187
+Numero nodi nella route = 11
+Sequenza : 
+0 101 35 81 97 125 102 63 40 8 15 11 0 
+
+Route 5:
+Costo = 45915.31305932225
+Totale Linehaul = 7846
+Totale Backhaul = 219
+Numero nodi nella route = 19
+Sequenza : 
+0 48 122 74 28 107 99 59 115 90 91 116 100 49 34 123 58 69 118 1 0 
+
+Route 6:
+Costo = 57263.617552015334
+Totale Linehaul = 7329
+Totale Backhaul = 2481
+Numero nodi nella route = 21
+Sequenza : 
+0 66 120 95 111 112 103 46 37 50 42 79 56 32 65 52 36 13 20 9 16 21 0 
+
+Route 7:
+Costo = 28755.577602482444
+Totale Linehaul = 7899
+Totale Backhaul = 0
+Numero nodi nella route = 13
+Sequenza : 
+0 110 86 119 39 30 117 67 45 62 87 72 89 76 0 
+
